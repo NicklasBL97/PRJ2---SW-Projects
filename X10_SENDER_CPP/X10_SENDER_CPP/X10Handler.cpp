@@ -1,36 +1,38 @@
 /*
- * x10.c
+ * X10Handler.cpp
  *
- * Created: 05-10-2019 14:38:13
+ * Created: 10-11-2019 20:40:18
  *  Author: nickl
  */ 
-#include "x10.h"
 
-void initX10(){
+#include "X10Handler.h"
+
+X10Handler::X10Handler(){
 	DDRB |= 0b10100000;		//making timer0A and timer1A pin an output
 	
 	//TCCR0A = 0b01000010;	//toggle on compare match and set to CTC mode REDUNDANT: this is done at startBurst() call
 	OCR0A = 66;				//Value required for 120kHz output
 	
+	EIMSK |=00000001;		//Enable INT0 for ZeroCrossDetector
+	EICRA |=00000011;		//Rising edge triggers INT0
 	
 	//set all values for the burst timer
 	TCCR1A = 0;				//normal mode
 	TCCR1B = 0b00000000;	//no prescaler, timer stopped, rest of normal mode
 	TIMSK1 |= 1<<0;			//enable overflow interrupts
-	
 }
 
 //void sendData(int[8]){
 	//
 //}
 
-void startBurst(){
+void X10Handler::startBurst(){
 	TCCR0A = 0b01000010;	//toggle on compare match and set to CTC mode
 	TCCR0B = 0b00000001;	//prescaler sættes til ingen prescaling for at starte 120kHz oscilation	f = f_CPU/(2*N*(1+OCR0A) ~ 119,4 kHz)
 	burstTimer(1);
 }
 
-void stopBurst(){
+void X10Handler::stopBurst(){
 	TCCR0B = 0b00000000;	//Stop 120kHz oscillation
 	TCCR1B = 0b00000000;	//no prescaler, timer stopped
 	
@@ -38,7 +40,7 @@ void stopBurst(){
 	PORTB = PINB & 0b01111111; //default the output to LOW when not bursting
 }
 
-void burstTimer(int ms){
+void X10Handler::burstTimer(int ms){
 		if(ms < 0 || ms >1000)					// default til 1 sek delay
 		{
 			TCNT1 = 65536 - (62500);
@@ -48,8 +50,9 @@ void burstTimer(int ms){
 		TCCR1B = 0b000000100;	//timer started
 }
 
-void zeroCrossDetect(){
+bool X10Handler::zeroCrossDetect(){
 	
+	return true;
 }
 
 void initT4Delay()
