@@ -1,5 +1,6 @@
 bool sendExample(int port, int baudRate)
 {
+	//Jeg er en bøsse ligesom Tue
 	char data[4];
 
 	CSerial* s = new CSerial();
