@@ -21,9 +21,15 @@
     <ClCompile Include="SerialExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PC_input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Serial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PC_input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
