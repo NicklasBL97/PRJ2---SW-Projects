@@ -143,12 +143,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="Pc_Styring.cpp" />
+=======
+    <ClCompile Include="Pc_Display.cpp" />
+>>>>>>> b3cef212e7d34bc6e67a1111cf136ec54ab698f7
     <ClCompile Include="Serial.cpp" />
     <ClCompile Include="SerialExample.cpp" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClInclude Include="Pc_Styring.h" />
+=======
+    <ClInclude Include="Pc_Display.h" />
+>>>>>>> b3cef212e7d34bc6e67a1111cf136ec54ab698f7
     <ClInclude Include="Serial.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
