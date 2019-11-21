@@ -10,7 +10,7 @@ bool sendExample(int port, int baudRate)
 		return false;
 	}
 
-
+	
 	// Sending a string of 4 characters
 	data[0] = 0x31; 
 	data[1] = 0x32;
