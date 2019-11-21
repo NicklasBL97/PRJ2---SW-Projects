@@ -17,8 +17,7 @@ public:
 	void SendOpvaegningsTid(int, int);
 	void SendNatTidValg(bool);
 	void SendNatTid(int, int);
-
-
-
+	void GodkendInfo(bool);
+	void SendValgTilStyring(int);
 };
 
