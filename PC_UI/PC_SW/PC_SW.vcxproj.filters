@@ -21,11 +21,7 @@
     <ClCompile Include="SerialExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Pc_Styring.cpp">
-=======
-    <ClCompile Include="Pc_Display.cpp">
->>>>>>> b3cef212e7d34bc6e67a1111cf136ec54ab698f7
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -33,11 +29,7 @@
     <ClInclude Include="Serial.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Pc_Styring.h">
-=======
-    <ClInclude Include="Pc_Display.h">
->>>>>>> b3cef212e7d34bc6e67a1111cf136ec54ab698f7
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
