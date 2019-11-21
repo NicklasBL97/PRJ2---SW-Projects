@@ -24,12 +24,36 @@
     <ClCompile Include="PC_input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PC_styring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PC_display.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UART.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Serial.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PC_input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PC_styring.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PC_display.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UART.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
