@@ -21,15 +21,9 @@
     <ClCompile Include="SerialExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pc_Styring.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Serial.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Pc_Styring.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
