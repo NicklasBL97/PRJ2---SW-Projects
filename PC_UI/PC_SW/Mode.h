@@ -1,8 +1,10 @@
 #pragma once
+#include <iostream>
+using namespace std;
 class Mode
 {
 	int mode_id;
-	bool OpvaagningOensket;
+	bool OpvaagningOenske;
 	int OpvaagningsTidspunkt_timer;
 	int OpvaagningsTidspunkt_minutter;
 	bool NatTidOensket;

@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+using namespace std;
 class PC_styring
 {
 
@@ -8,15 +10,15 @@ public:
 	void SetMode(int);
 	void SpoergEfterOpvaagningOenskes();
 	void SpoergEfterValgAfMode();
-	void SetOpvaagningsValg(Bool);
+	void SetOpvaagningsValg(bool);
 	void SpoergEfterOpvaagningsTidspunkt();
-	void SetOpvaagningsTid(int, Int);
+	void SetOpvaagningsTid(int, int);
 	void SpoergEfterNatTidOensket();
-	void SetNatTidValg(Bool);
+	void SetNatTidValg(bool);
 	void SpoergEfterNatTidspunkt();
-	void SetNatTid(int, Int);
+	void SetNatTid(int, int);
 	Mode GetMode();
-	void UdskrivModeInfo(String);
+	void UdskrivModeInfo(string);
 	void UdskrivModeAktiveret();
 	void SendKommando(int);
 	void SpoergEfterStyringsValg();
