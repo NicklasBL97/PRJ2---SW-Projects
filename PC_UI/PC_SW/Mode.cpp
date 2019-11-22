@@ -2,8 +2,24 @@
 
 
 
-Mode::Mode()
+Mode::Mode(int id)
 {
+	if (0 < id < 5)
+	{
+		mode_id = id;
+	}
+	else
+	{
+		mode_id = 4;
+	}
+	OpvaagningOenske = false;
+	OpvaagningsTidspunkt_timer = 0;
+	OpvaagningsTidspunkt_minutter = 0;
+	NatTidOensket = false;
+	NatTid_timer = 0;
+	NatTid_minutter = 0;
+	LysTaend = false;
+	GardinOppe = false;
 }
 
 

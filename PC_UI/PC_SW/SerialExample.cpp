@@ -1,4 +1,4 @@
-bool sendExample(int port, int baudRate)
+/*bool sendExample(int port, int baudRate)
 {
 	char data[4];
 
@@ -24,3 +24,4 @@ bool sendExample(int port, int baudRate)
 
 }
 
+*/

@@ -13,7 +13,7 @@ class Mode
 	bool LysTaend;
 	bool GardinOppe;
 public:
-	Mode();
+	Mode(int id);
 	~Mode();
 	void SetMode_id(int);
 	void SetOpvaagningsOenske(bool);

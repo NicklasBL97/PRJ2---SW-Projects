@@ -1,4 +1,4 @@
-// Serial.cpp
+/*Serial.cpp
 
 #include "stdafx.h"
 #include "Serial.h"
@@ -166,3 +166,4 @@ int CSerial::ReadData( void *buffer, int limit )
 
 }
 
+*/
