@@ -1,6 +1,3 @@
-#include "Mode.h"
-#include "PC_display.h"
-#include "PC_input.h"
 #include "PC_styring.h"
 #include "Serial.h"
 #include "UART.h"
@@ -12,6 +9,7 @@
 
 int main()
 {
+	/*
 	//henter og udskriver tiden fra PC
 	auto tid = std::chrono::system_clock::now();
 	std::time_t tidnu = std::chrono::system_clock::to_time_t(tid);
@@ -22,6 +20,8 @@ int main()
 	test.tm_hour = 11;
 	test.tm_min = 50;
 	//test.tm_year = std::chrono::system_clock::
-	PC_styring bo(display, input)
+	*/
+
+	PC_styring bo;
 	return 0;
 }

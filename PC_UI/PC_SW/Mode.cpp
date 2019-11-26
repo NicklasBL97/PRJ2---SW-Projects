@@ -2,16 +2,9 @@
 
 
 
-Mode::Mode(int id = 4)
+Mode::Mode()
 {
-	if (0 < id < 5)
-	{
-		mode_id = id;
-	}
-	else
-	{
-		mode_id = 4;
-	}
+	mode_id = 4;
 	OpvaagningOenske = false;
 	OpvaagningsTidspunkt_timer = 0;
 	OpvaagningsTidspunkt_minutter = 0;

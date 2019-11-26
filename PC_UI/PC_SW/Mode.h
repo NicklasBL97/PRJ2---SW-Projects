@@ -14,7 +14,7 @@ private:
 	bool LysTaend;
 	bool GardinOppe;
 public:
-	Mode(int id = 4);
+	Mode();
 	~Mode();
 	void SetMode_id(int);
 	int GetMode_id();
