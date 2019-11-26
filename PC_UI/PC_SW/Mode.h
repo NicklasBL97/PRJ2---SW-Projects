@@ -22,9 +22,12 @@ public:
 	bool GetOpvaagningsOenske();
 	void SetOpvaagningsTidspunkt_timer(int);
 	void SetOpvaagningsTidspunkt_Minutter(int);
+	void GetOpvaagningstid(int &, int &);
 	void SetNatTidOensket(bool);
+	bool GetNatTidOenske();
 	void SetNatTid_timer(int);
 	void SetNatTid_Minutter(int);
+	void GetNatTid(int &, int &);
 	void SetLysTaendStatus(bool);
 	void SetGardinOppeStatus(bool);
 };

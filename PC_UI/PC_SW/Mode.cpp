@@ -71,9 +71,20 @@ void Mode::SetOpvaagningsTidspunkt_Minutter(int tid)
 	}
 }
 
+void Mode::GetOpvaagningstid(int & time, int & min)
+{
+	time = OpvaagningsTidspunkt_timer;
+	min = OpvaagningsTidspunkt_minutter;
+}
+
 void Mode::SetNatTidOensket(bool valg)
 {
 	NatTidOensket = valg;
+}
+
+bool Mode::GetNatTidOenske()
+{
+	return NatTidOensket;
 }
 
 void Mode::SetNatTid_timer(int tid)
@@ -98,6 +109,12 @@ void Mode::SetNatTid_Minutter(int tid)
 	{
 		NatTid_minutter = 0;
 	}
+}
+void Mode::GetNatTid(int &time, int &min)
+{
+	time = NatTid_timer;
+	min = NatTid_minutter;
+
 }
 void Mode::SetLysTaendStatus(bool status)
 {
