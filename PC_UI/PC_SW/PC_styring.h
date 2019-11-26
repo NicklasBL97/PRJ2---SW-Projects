@@ -11,12 +11,10 @@ private:
 	PC_display display_;
 	PC_input input_;
 public:
-	PC_styring(Mode, PC_display, PC_input);
+	PC_styring();
 	~PC_styring();
 	void SetMode(int);
 	void SpoergEfterOpvaagningOenskes();
-	void SpoergEfterValgAfMode();
-	void SetOpvaagningsValg(bool);
 	void SpoergEfterOpvaagningsTidspunkt();
 	void SetOpvaagningsTid(int, int);
 	void SpoergEfterNatTidOensket();

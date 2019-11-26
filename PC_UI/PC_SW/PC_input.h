@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include "PC_styring.h"
 using namespace std;
 class PC_input
 {
@@ -19,9 +18,5 @@ public:
 	void SendNatTid(int, int);
 	void GodkendInfo(bool);
 	void SendValgTilStyring(int);
-
-private:
-
-	PC_styring *styringsptr;
 };
 
