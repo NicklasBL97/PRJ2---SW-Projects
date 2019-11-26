@@ -14,9 +14,10 @@ private:
 	bool LysTaend;
 	bool GardinOppe;
 public:
-	Mode(int id);
+	Mode(int id = 4);
 	~Mode();
 	void SetMode_id(int);
+	int GetMode_id();
 	void SetOpvaagningsOenske(bool);
 	void SetOpvaagningsTidspunkt_timer(int);
 	void SetOpvaagningsTidspunkt_Minutter(int);
