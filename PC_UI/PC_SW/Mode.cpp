@@ -2,7 +2,7 @@
 
 
 
-Mode::Mode(int id)
+Mode::Mode(int id = 4)
 {
 	if (0 < id < 5)
 	{
@@ -31,13 +31,17 @@ void Mode::SetMode_id(int id)
 {
 	if (4 < id || id < 0)
 	{
-		cout << "Ugyldig valg, intet program er valgt" << endl;
 		mode_id = 4;
 	}
 	else
 	{
 		mode_id = id;
 	}
+}
+
+int Mode::GetMode_id()
+{
+	return mode_id;
 }
 
 void Mode::SetOpvaagningsOenske(bool valg)
@@ -53,7 +57,6 @@ void Mode::SetOpvaagningsTidspunkt_timer(int tid)
 	}
 	else
 	{
-		cout << "Ugyldigt time tal indtastet, time tal er sat til 0" << endl;
 		OpvaagningsTidspunkt_timer = 0;
 	}
 }
@@ -66,7 +69,6 @@ void Mode::SetOpvaagningsTidspunkt_Minutter(int tid)
 	}
 	else
 	{
-		cout << "Ugyldigt min. tal indtastet, time tal er sat til 0" << endl;
 		OpvaagningsTidspunkt_minutter = 0;
 	}
 }
@@ -84,7 +86,6 @@ void Mode::SetNatTid_timer(int tid)
 	}
 	else
 	{
-		cout << "Ugyldigt time tal indtastet, time tal er sat til 0" << endl;
 		NatTid_timer = 0;
 	}
 }
@@ -97,7 +98,6 @@ void Mode::SetNatTid_Minutter(int tid)
 	}
 	else
 	{
-		cout << "Ugyldigt min. tal indtastet, time tal er sat til 0" << endl;
 		NatTid_minutter = 0;
 	}
 }

@@ -1,9 +1,9 @@
 #include "Mode.h"
 #include "PC_display.h"
-//#include "PC_input.h"
-//#include "PC_styring.h"
-//#include "Serial.h"
-//#include "UART.h"
+#include "PC_input.h"
+#include "PC_styring.h"
+#include "Serial.h"
+#include "UART.h"
 #include <iostream>
 #include <chrono>
 #include <ctime>
@@ -22,6 +22,6 @@ int main()
 	test.tm_hour = 11;
 	test.tm_min = 50;
 	//test.tm_year = std::chrono::system_clock::
-
+	PC_styring bo(display, input)
 	return 0;
 }
