@@ -49,6 +49,11 @@ void Mode::SetOpvaagningsOenske(bool valg)
 	OpvaagningOenske = valg;
 }
 
+bool Mode::GetOpvaagningOenske()
+{
+	return OpvaagningOenske;
+}
+
 void Mode::SetOpvaagningsTidspunkt_timer(int tid)
 {
 	if (0 < tid < 24)

@@ -19,6 +19,7 @@ public:
 	void SetMode_id(int);
 	int GetMode_id();
 	void SetOpvaagningsOenske(bool);
+	bool GetOpvaagningOenske();
 	void SetOpvaagningsTidspunkt_timer(int);
 	void SetOpvaagningsTidspunkt_Minutter(int);
 	void SetNatTidOensket(bool);

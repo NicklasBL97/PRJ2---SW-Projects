@@ -12,8 +12,9 @@ public:
 
 	//void SendModeToStyring();
 	int VaelgNyMode();
-	void SendOpvaegningsValg(bool);
-	void SendOpvaegningsTid(int, int);
+	bool VaelgOpvaegningsValg();
+	
+	void SendOpvaegningsTid(int&, int&);
 	void SendNatTidValg(bool);
 	void SendNatTid(int, int);
 	void GodkendInfo(bool);
