@@ -3,6 +3,7 @@
 using namespace std;
 class Mode
 {
+private:
 	int mode_id;
 	bool OpvaagningOenske;
 	int OpvaagningsTidspunkt_timer;

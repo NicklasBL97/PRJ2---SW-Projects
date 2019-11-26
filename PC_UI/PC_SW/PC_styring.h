@@ -1,4 +1,4 @@
-/*#pragma once
+#pragma once
 #include <iostream>
 using namespace std;
 class PC_styring
@@ -17,7 +17,7 @@ public:
 	void SetNatTidValg(bool);
 	void SpoergEfterNatTidspunkt();
 	void SetNatTid(int, int);
-	Mode GetMode();
+	void GetMode();
 	void UdskrivModeInfo(string);
 	void UdskrivModeAktiveret();
 	void SendKommando(int);
