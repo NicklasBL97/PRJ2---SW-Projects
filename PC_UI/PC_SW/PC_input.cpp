@@ -56,3 +56,15 @@ void PC_input::SendNatTid(int &time, int &min)
 
 
 }
+
+bool PC_input::GodkendInfo()
+{
+	int x;
+	cin >> x;
+	if (x == 1) {
+
+		return true;
+	}
+	else
+		return false;
+}

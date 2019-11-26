@@ -27,9 +27,17 @@ void PC_styring::UdskrivModeInfo()
 	bool nv = mode_.GetNatTidOenske();
 	int ntime, nmin;
 	mode_.GetNatTid(ntime, nmin);
-
 	display_.PrintModeInfo(id, ov, otime, omin, nv, ntime, nmin);
-	
+
+}
+
+void PC_styring::UdskrivModeAktiveret()
+{
+	display_.PrintModeAktiveret();
+	while (kbhit() == false)
+	{
+
+	}
 }
 
 void PC_styring::SetMode(int m)
@@ -56,7 +64,14 @@ void PC_styring::SetMode(int m)
 			SpoergEfterNatTidspunkt();
 		}
 		UdskrivModeInfo();
-		
+		if (input_.GodkendInfo() == true)
+		{
+			while (kbhit() == false)
+			{
+				//sammenlign og send
+			}
+		}
+	
 		
 	}
 	else if (mode_.GetMode_id() == 4)
@@ -104,7 +119,7 @@ void PC_styring::SpoergEfterNatTidspunkt()
 void PC_styring::SetNatTid(int time, int min)
 {
 	mode_.SetNatTid_timer(time);
-	mode_.SetOpvaagningsTidspunkt_Minutter(min);
+	mode_.SetNatTid_Minutter(min);
 }
 
 

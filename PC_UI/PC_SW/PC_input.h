@@ -9,7 +9,7 @@ public:
 	PC_input();
 	~PC_input();
 
-	//void SendModeToStyring();
+	
 	int VaelgNyMode();
 	bool VaelgOpvaagningsValg();
 	
@@ -19,7 +19,7 @@ public:
 
 	void SendNatTid(int&, int&);
 
-	void GodkendInfo(bool);
-	void SendValgTilStyring(int);
+	bool GodkendInfo();
+	
 };
 

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include<conio.h>
 #include "Mode.h"
 #include "PC_display.h"
 #include "PC_input.h"

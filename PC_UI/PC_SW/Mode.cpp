@@ -49,7 +49,7 @@ bool Mode::GetOpvaagningsOenske()
 
 void Mode::SetOpvaagningsTidspunkt_timer(int tid)
 {
-	if (0 < tid < 24)
+	if (0 <= tid && tid < 24)
 	{
 		OpvaagningsTidspunkt_timer = tid;
 	}
@@ -61,7 +61,7 @@ void Mode::SetOpvaagningsTidspunkt_timer(int tid)
 
 void Mode::SetOpvaagningsTidspunkt_Minutter(int tid)
 {
-	if (0 <= tid < 59)
+	if (0 <= tid && tid < 59)
 	{
 		OpvaagningsTidspunkt_minutter = tid;
 	}
@@ -71,7 +71,7 @@ void Mode::SetOpvaagningsTidspunkt_Minutter(int tid)
 	}
 }
 
-void Mode::GetOpvaagningstid(int & time, int & min)
+void Mode::GetOpvaagningstid(int &time, int &min)
 {
 	time = OpvaagningsTidspunkt_timer;
 	min = OpvaagningsTidspunkt_minutter;
@@ -89,7 +89,7 @@ bool Mode::GetNatTidOenske()
 
 void Mode::SetNatTid_timer(int tid)
 {
-	if (0 < tid < 24)
+	if (0 <= tid && tid < 24)
 	{
 		NatTid_timer = tid;
 	}
@@ -101,7 +101,7 @@ void Mode::SetNatTid_timer(int tid)
 
 void Mode::SetNatTid_Minutter(int tid)
 {
-	if (0 <= tid < 59)
+	if (0 <= tid && tid < 59)
 	{
 		NatTid_minutter = tid;
 	}
