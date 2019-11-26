@@ -47,10 +47,30 @@ void PC_display::PrintHvadSkalStyres()
 	cout << "Vil du taende for lyset tast 1\n\nVil du slukke for lyset tast 2\n\nVil du rulle gardin op? tast 3\n\nVil du rulle gardin ned? tast 4\n";
 }
 
-void PC_display::PrintModeInfo()
+void PC_display::PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, int ntime, int nmin)
 {
 	system("cls");
-	//her skal der lige tænkes, hvordan den skal designes for at printe de rigtige ting ud og sådan
+
+	if (id == 1)
+	{
+		cout << "Manuel Styring er valgt\n";
+	}
+	else if (id == 2)
+	{
+		cout << "Intet program er valgt\n";
+	}
+	else if (id == 3)
+	{
+		cout << "Opvaagningsprogram er valgt\n";
+		if (ov == true)
+		{
+	
+		}
+	}
+	else if (id == 4)
+	{
+		cout << "Tyverisikringsprogram er valgt\n";
+	}
 }
 
 void PC_display::PrintModeAktiveret()

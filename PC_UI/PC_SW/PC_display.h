@@ -12,7 +12,7 @@ public:
 	void PrintErNatTidOensket();
 	void PrintHvornaarNatTid();
 	void PrintHvadSkalStyres();
-	void PrintModeInfo();
+	void PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, int ntime, int nmin);
 	void PrintModeAktiveret();
 };
 

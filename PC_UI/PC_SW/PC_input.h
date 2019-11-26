@@ -11,7 +11,7 @@ public:
 
 	//void SendModeToStyring();
 	int VaelgNyMode();
-	bool VaelgOpvaegningsValg();
+	bool VaelgOpvaagningsValg();
 	
 	void SendOpvaegningsTid(int&, int&);
 	void SendNatTidValg(bool);

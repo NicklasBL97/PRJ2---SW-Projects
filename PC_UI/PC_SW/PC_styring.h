@@ -18,11 +18,10 @@ public:
 	void SpoergEfterOpvaagningsTidspunkt();
 	void SetOpvaagningsTid(int, int);
 	void SpoergEfterNatTidOensket();
-	void SetNatTidValg(bool);
 	void SpoergEfterNatTidspunkt();
 	void SetNatTid(int, int);
 	void GetMode();
-	void UdskrivModeInfo(string);
+	void UdskrivModeInfo();
 	void UdskrivModeAktiveret();
 	void SendKommando(int);
 	void SpoergEfterStyringsValg();

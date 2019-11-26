@@ -42,7 +42,7 @@ void Mode::SetOpvaagningsOenske(bool valg)
 	OpvaagningOenske = valg;
 }
 
-bool Mode::GetOpvaagningOenske()
+bool Mode::GetOpvaagningsOenske()
 {
 	return OpvaagningOenske;
 }

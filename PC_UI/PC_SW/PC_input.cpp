@@ -19,7 +19,7 @@ int PC_input::VaelgNyMode()
 	
 }
 
-bool PC_input::VaelgOpvaegningsValg()
+bool PC_input::VaelgOpvaagningsValg()
 {
 	int x;
 	cin >> x;
