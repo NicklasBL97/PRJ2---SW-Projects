@@ -9,7 +9,7 @@ PC_display::PC_display()
 void PC_display::PrintModevalg()
 {
 	system("cls");
-	cout << "indtast et tal mellem 1-4 for at vaelge et mode:\n\n\n\ntast 1 for Manuel styring\nTast 2 for Vaelg intet program\nTast 3 for opvaegningsprogram\nTast 4 for Tyverisikringsprogram\n";
+	cout << "indtast et tal mellem 1-4 for at vaelge et mode:\n\n\n\nTast 1 for Manuel styring\nTast 2 for Vaelg intet program\nTast 3 for Opvaegningsprogram\nTast 4 for Tyverisikringsprogram\n";
 }
 
 void PC_display::PrintErOpOensket()
@@ -77,7 +77,24 @@ void PC_display::PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, in
 	}
 	else if (id == 4)
 	{
-		cout << "\nTyverisikringsprogram er valgt\n";
+		cout << "Tyverisikringsprogram er valgt\n";
+		if (ov == true)
+		{
+			cout << "Opvaagnings tid er indstillet til:" << otime << ":" << omin << endl;
+		}
+		else
+		{
+			cout << "Opvaagning ikke valgt" << endl;
+		}
+		if (nv == true)
+		{
+			cout << "Nat tid er indstillet til:" << ntime << ":" << nmin << endl;
+		}
+		else
+		{
+			cout << "Nat tid ikke valgt" << endl;
+		}
+		cout << "Vil du godkende valgte indstillinger" << endl << "Tast 1 for ja\nTast 2 for nej\n";
 	}
 }
 void PC_display::PrintModeAktiveret(int id, bool ov, int otime, int omin, bool nv, int ntime, int nmin)
@@ -112,9 +129,25 @@ void PC_display::PrintModeAktiveret(int id, bool ov, int otime, int omin, bool n
 		}
 		
 	}
-	else if (id == 3)
+	else if (id == 4)
 	{
-
+		cout << "Tyverisikringsprogram er valgt\n";
+		if (ov == true)
+		{
+			cout << "Opvaagnings tid er indstillet til:" << otime << ":" << omin << endl;
+		}
+		else
+		{
+			cout << "Opvaagning ikke valgt" << endl;
+		}
+		if (nv == true)
+		{
+			cout << "Nat tid er indstillet til:" << ntime << ":" << nmin << endl;
+		}
+		else
+		{
+			cout << "Nat tid ikke valgt" << endl;
+		}
 	}
 	cout << "Tryk paa en enter for at vaelge nyt program" << endl;
 }

@@ -3,8 +3,6 @@
 using namespace std;
 class PC_input
 {
-
-
 public:
 	PC_input();	
 	int VaelgNyMode();

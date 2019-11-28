@@ -4,6 +4,7 @@
 #include <chrono>
 #include <ctime>
 #include <stdlib.h>
+#include <stdio.h>
 #include "Mode.h"
 #include "PC_display.h"
 #include "PC_input.h"

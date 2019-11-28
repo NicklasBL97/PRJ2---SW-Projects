@@ -53,10 +53,12 @@ void Mode::SetOpvaagningsTidspunkt_timer(int tid)
 	{
 		OpvaagningsTidspunkt_timer = 0;
 	}
+	
 }
 
 void Mode::SetOpvaagningsTidspunkt_Minutter(int tid)
 {
+	
 	if (0 <= tid && tid < 59)
 	{
 		OpvaagningsTidspunkt_minutter = tid;
