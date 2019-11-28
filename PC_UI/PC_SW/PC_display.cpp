@@ -9,13 +9,13 @@ PC_display::PC_display()
 void PC_display::PrintModevalg()
 {
 	system("cls");
-	cout << "indtast et tal mellem 1-4 for at vaelge et mode:\n\n\n\ntast 1 for Manuel styring\nTast 2 for Vaelg intet program\nTast 3 for opvaegningsprogram\nTast 4 for Tyverisikringsprogram\n";
+	cout << "Indtast et tal mellem 1-4 for at vaelge et mode:\n\n\n\nTast 1 for Manuel styring\nTast 2 for Vaelg intet program\nTast 3 for Opvaegningsprogram\nTast 4 for Tyverisikringsprogram\n";
 }
 
 void PC_display::PrintErOpOensket()
 {
 	system("cls");
-	cout << "Er opvaagning Oensket ?\n\nTast 1 for ja\n\nTast 2 for nej\n";
+	cout << "Er opvaagning oensket ?\n\nTast 1 for ja\n\nTast 2 for nej\n";
 }
 
 void PC_display::PrintHvornaarOpTid()
@@ -116,5 +116,5 @@ void PC_display::PrintModeAktiveret(int id, bool ov, int otime, int omin, bool n
 	{
 
 	}
-	cout << "Tryk paa en enter for at vaelge nyt program" << endl;
+	cout << "Tryk paa enter for at vaelge nyt program" << endl;
 }
