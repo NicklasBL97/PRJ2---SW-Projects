@@ -1,10 +1,13 @@
 #pragma once
 #include <iostream>
-#include<conio.h>
+#include <conio.h>
+#include <iostream>
+#include <chrono>
+#include <ctime>
 #include "Mode.h"
 #include "PC_display.h"
 #include "PC_input.h"
-using namespace std;
+#include <stdlib.h>
 class PC_styring
 {
 private:
@@ -13,7 +16,6 @@ private:
 	PC_input input_;
 public:
 	PC_styring();
-	~PC_styring();
 	void SetMode(int);
 	void SpoergEfterOpvaagningOenskes();
 	void SpoergEfterOpvaagningsTidspunkt();

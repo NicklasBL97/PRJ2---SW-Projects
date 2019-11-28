@@ -5,7 +5,6 @@ class PC_display
 {
 public:
 	PC_display();
-	~PC_display();
 	void PrintModevalg();
 	void PrintErOpOensket();
 	void PrintHvornaarOpTid();
@@ -13,6 +12,6 @@ public:
 	void PrintHvornaarNatTid();
 	void PrintHvadSkalStyres();
 	void PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, int ntime, int nmin);
-	void PrintModeAktiveret();
+	void PrintModeAktiveret(int id, bool ov, int otime, int omin, bool nv, int ntime, int nmin);
 };
 

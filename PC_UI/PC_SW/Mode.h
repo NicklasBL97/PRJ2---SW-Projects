@@ -15,7 +15,6 @@ private:
 	bool GardinOppe;
 public:
 	Mode();
-	~Mode();
 	void SetMode_id(int);
 	int GetMode_id();
 	void SetOpvaagningsOenske(bool);

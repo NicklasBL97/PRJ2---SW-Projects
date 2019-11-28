@@ -7,10 +7,6 @@ PC_styring::PC_styring()
 }
 
 
-PC_styring::~PC_styring()
-{
-}
-
 void PC_styring::GetMode()
 {
 	display_.PrintModevalg();
@@ -28,16 +24,20 @@ void PC_styring::UdskrivModeInfo()
 	int ntime, nmin;
 	mode_.GetNatTid(ntime, nmin);
 	display_.PrintModeInfo(id, ov, otime, omin, nv, ntime, nmin);
-
+	
 }
 
 void PC_styring::UdskrivModeAktiveret()
 {
-	display_.PrintModeAktiveret();
-	while (kbhit() == false)
-	{
-
-	}
+	int id = mode_.GetMode_id();
+	bool ov = mode_.GetOpvaagningsOenske();
+	int otime, omin;
+	mode_.GetOpvaagningstid(otime, omin);
+	bool nv = mode_.GetNatTidOenske();
+	int ntime, nmin;
+	mode_.GetNatTid(ntime, nmin);
+	display_.PrintModeAktiveret(id, ov, otime, omin, nv, ntime, nmin);
+	
 }
 
 void PC_styring::SetMode(int m)
@@ -64,14 +64,45 @@ void PC_styring::SetMode(int m)
 			SpoergEfterNatTidspunkt();
 		}
 		UdskrivModeInfo();
-		if (input_.GodkendInfo() == true)
+		if (input_.GodkendInfo())
 		{
-			while (kbhit() == false)
+			UdskrivModeAktiveret();
+			_sleep(500);
+			while (_kbhit() == false)
 			{
-				//sammenlign og send
+				_sleep(1000);
+				//henter og udskriver tiden fra PC
+				auto tid = std::chrono::system_clock::now();
+				std::time_t tidnu = std::chrono::system_clock::to_time_t(tid);
+				// Omregn tid nu(sek siden 1970) til sekunder på dagen, ved at tage modulos til antal sek på en dag.
+				int tidnusek = tidnu % 86400;
+				// Omregn tid nu til min på dagen, ved at tage antal sek på en dag og lave til min, også modulos 60
+				int tidnumin = (tidnusek / 60) % 60;
+				// Omregn tid nu til timer på dagen, ved at tage antal sek på en dag og lave til timer, også modulos 60
+				// + 1 for at gå til rigtige tids zone og modulos 24 for at sikre man ikke går over 24
+				int tidnutimer = (((tidnusek / 3600) % 60) + 1) % 24;
+
+				//Henter nu mode tider til at sammenligne
+				if (mode_.GetOpvaagningsOenske())
+				{ 
+					int test_omin, test_otimer;
+					mode_.GetOpvaagningstid(test_otimer, test_omin);
+					if (test_otimer == tidnutimer && test_omin == tidnumin)
+					{
+						//SEND DATA TÆND LED
+					}
+				}
+				else if (mode_.GetNatTidOenske())
+				{
+					int test_nmin, test_ntimer;
+					mode_.GetNatTid(test_ntimer, test_nmin);
+					if (test_ntimer == tidnutimer && test_nmin == tidnumin)
+					{
+						//SEND DATA SLUK LED
+					}
+				}
 			}
 		}
-	
 		
 	}
 	else if (mode_.GetMode_id() == 4)

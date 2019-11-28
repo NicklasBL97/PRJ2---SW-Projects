@@ -16,10 +16,6 @@ Mode::Mode()
 }
 
 
-Mode::~Mode()
-{
-}
-
 void Mode::SetMode_id(int id)
 {
 	if (4 < id || id < 0)

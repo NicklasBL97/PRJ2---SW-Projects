@@ -7,10 +7,6 @@ PC_input::PC_input()
 }
 
 
-PC_input::~PC_input()
-{
-}
-
 int PC_input::VaelgNyMode()
 {
 	int x;
