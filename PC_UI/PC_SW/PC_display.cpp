@@ -59,7 +59,7 @@ void PC_display::PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, in
 		cout << "Opvaagningsprogram er valgt\n";
 		if (ov == true)
 		{
-			cout << "Opvaagnings tid er indstillet til:" << otime << ":" << omin << endl;
+			cout << "Opvaagnings tid er indstillet til: " << otime << ":" << omin << endl;
 		}
 		else
 		{
@@ -67,7 +67,7 @@ void PC_display::PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, in
 		}
 		if (nv == true)
 		{
-			cout << "Nat tid er indstillet til:" << ntime << ":" << nmin << endl;
+			cout << "Nat tid er indstillet til: " << ntime << ":" << nmin << endl;
 		}
 		else
 		{
@@ -80,7 +80,7 @@ void PC_display::PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, in
 		cout << "Tyverisikringsprogram er valgt\n";
 		if (ov == true)
 		{
-			cout << "Opvaagnings tid er indstillet til:" << otime << ":" << omin << endl;
+			cout << "Opvaagnings tid er indstillet til: " << otime << ":" << omin << endl;
 		}
 		else
 		{
@@ -88,7 +88,7 @@ void PC_display::PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, in
 		}
 		if (nv == true)
 		{
-			cout << "Nat tid er indstillet til:" << ntime << ":" << nmin << endl;
+			cout << "Nat tid er indstillet til: " << ntime << ":" << nmin << endl;
 		}
 		else
 		{
