@@ -1,4 +1,4 @@
-#include "Serial.h"
+#include "UART.h"
 #include <iostream>
 bool sendExample(int port, int baudRate)
 {

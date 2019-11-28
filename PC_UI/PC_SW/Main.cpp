@@ -1,9 +1,4 @@
 #include "PC_styring.h"
-#include "Serial.h"
-#include "UART.h"
-#include <iostream>
-#include <chrono>
-#include <ctime>
 
 /*
 //henter og udskriver tiden fra PC

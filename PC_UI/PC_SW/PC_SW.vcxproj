@@ -148,16 +148,14 @@
     <ClCompile Include="PC_display.cpp" />
     <ClCompile Include="PC_input.cpp" />
     <ClCompile Include="PC_styring.cpp" />
-    <ClCompile Include="Serial.cpp" />
-    <ClCompile Include="SerialExample.cpp" />
     <ClCompile Include="UART.cpp" />
+    <ClCompile Include="UARTExample.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mode.h" />
     <ClInclude Include="PC_display.h" />
     <ClInclude Include="PC_input.h" />
     <ClInclude Include="PC_styring.h" />
-    <ClInclude Include="Serial.h" />
     <ClInclude Include="UART.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

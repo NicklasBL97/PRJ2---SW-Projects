@@ -1,13 +1,14 @@
 #pragma once
 #include <iostream>
 #include <conio.h>
-#include <iostream>
 #include <chrono>
 #include <ctime>
+#include <stdlib.h>
 #include "Mode.h"
 #include "PC_display.h"
 #include "PC_input.h"
-#include <stdlib.h>
+#include "UART.h"
+
 class PC_styring
 {
 private:
