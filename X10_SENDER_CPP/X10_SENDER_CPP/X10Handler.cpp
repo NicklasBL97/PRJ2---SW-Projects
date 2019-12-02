@@ -1,20 +1,15 @@
-/*
- * X10Handler.cpp
- *
- * Created: 10-11-2019 20:40:18
- *  Author: nickl
- */ 
-
 #include "X10Handler.h"
 
-X10Handler::X10Handler(){
-	DDRB |= 0b10100000;		//making timer0A and timer1A pin an output
+X10Handler::X10Handler()
+:zeroCross_(false)
+{
+	DDRB |= 0b10100001;		//making timer0A and timer1A pin an output
 	
 	//TCCR0A = 0b01000010;	//toggle on compare match and set to CTC mode REDUNDANT: this is done at startBurst() call
 	OCR0A = 66;				//Value required for 120kHz output
 	
-	EIMSK |=00000001;		//Enable INT0 for ZeroCrossDetector
-	EICRA |=00000011;		//Rising edge triggers INT0
+	EIMSK |=0b00000001;		//Enable INT0 for ZeroCrossDetector
+	EICRA |=0b00000010;		//Rising edge triggers INT0
 	
 	//set all values for the burst timer
 	TCCR1A = 0;				//normal mode
@@ -22,12 +17,17 @@ X10Handler::X10Handler(){
 	TIMSK1 |= 1<<0;			//enable overflow interrupts
 }
 
-//void sendData(int[8]){
-	//
-//}
+void X10Handler::setZeroCross(bool zc){
+	zeroCross_ = zc;
+}
+
+bool X10Handler::getZeroCross() const {
+	return zeroCross_;
+}
 
 void X10Handler::startBurst(){
-	TCCR0A = 0b01000010;	//toggle on compare match and set to CTC mode
+	EIMSK &= 0b11111110;		//disable further interrupts from zerocross while bursting
+	TCCR0A = 0b01000010;	//set to CTC mode and toggle on compare match
 	TCCR0B = 0b00000001;	//prescaler sættes til ingen prescaling for at starte 120kHz oscilation	f = f_CPU/(2*N*(1+OCR0A) ~ 119,4 kHz)
 	burstTimer(1);
 }
@@ -38,6 +38,7 @@ void X10Handler::stopBurst(){
 	
 	TCCR0A = 0b00000000;	//IMPORTANT: Can't write to the output pin while in CTC mode, so we change to normal mode
 	PORTB = PINB & 0b01111111; //default the output to LOW when not bursting
+	EIMSK |=0b00000001;		//Enable INT0 for ZeroCrossDetector again
 }
 
 void X10Handler::burstTimer(int ms){
@@ -47,12 +48,47 @@ void X10Handler::burstTimer(int ms){
 		} else {								// indsæt delay mellem 0 1000 ms
 			TCNT1 = 65536 - ((ms/1000.0)*62500);
 		}
-		TCCR1B = 0b000000100;	//timer started
+		TCCR1B = 0b00000100;	//timer started
 }
 
-bool X10Handler::zeroCrossDetect(){
+void X10Handler::sendMode(char bitNumber){
+	volatile int x10code = 0;				//storage for the mode in the x10 protocol
 	
-	return true;
+	for(int i = 0; i < 8; i++){		//fill x10code with bitNumber
+		if(bitNumber & 1<<i){
+			x10code |= 2<<i*2;
+		}	else {
+			x10code |= 1<<i*2;
+		}
+	}
+	
+	for(int i = 0; i<16 ;i++){		//Send a burst at zerocross for every binary 1 in x10code
+		PORTB |= 0b00000001;
+		while(!getZeroCross()){}
+			PORTB &= 0b11111110;
+		if( (x10code & 1<<(15-i))){
+			startBurst();
+		}
+		setZeroCross(false);
+	}
+	
+	//while(1){
+		//char counter = 0;
+		//PORTB |= 0b00000001;
+		//if(getZeroCross()){
+			//if((x10code & 1<<(15-counter))){
+				//startBurst();
+				//PORTB &= 0b11111110;
+			//}
+			//counter++;
+			//setZeroCross(false);
+		//}
+		//if(counter > 15)
+			//break;
+			//
+	//}
+	
+	
 }
 
 void initT4Delay()

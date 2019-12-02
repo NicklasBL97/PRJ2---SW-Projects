@@ -17,13 +17,17 @@ public:
 	void startBurst();
 	void stopBurst();
 	void burstTimer(int ms);
-	bool zeroCrossDetect();
-	bool sendMode(char bitNumber);
+	void sendMode(char bitNumber);
+	
+	void setZeroCross(bool zc);
+	bool getZeroCross() const;
 	
 private:
 	char currentMode_;
 	char newMode_;
 	char sendCnt;
+	
+	bool zeroCross_;
 };
 void initT4Delay();
 void T4Delay(int ms);
