@@ -151,3 +151,8 @@ void PC_display::PrintModeAktiveret(int id, bool ov, int otime, int omin, bool n
 	}
 	cout << "Tryk paa enter for at vaelge nyt program" << endl;
 }
+
+void PC_display::ComClosed()
+{
+	cout << "Could not open COM" << endl;
+}

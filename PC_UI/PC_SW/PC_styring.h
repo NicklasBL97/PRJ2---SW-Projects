@@ -16,6 +16,7 @@ private:
 	Mode mode_;
 	PC_display display_;
 	PC_input input_;
+	CSerial Uart_;
 public:
 	PC_styring();
 	void SetMode(int);

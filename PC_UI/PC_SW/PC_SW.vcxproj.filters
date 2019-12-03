@@ -33,9 +33,6 @@
     <ClCompile Include="UART.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UARTExample.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PC_input.h">
