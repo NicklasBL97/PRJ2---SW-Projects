@@ -14,14 +14,17 @@ int main(void)
 	
 	kommunikation com;
 	DDRB = 0b11111111;
-	
+
 	
     /* Replace with your application code */
+	
+	
     while (1) 
     {
-	char test =	com.ReadChar();
 		
-		PORTB |= test;
-    }
+	com.ReadChar();
+	
+		
+	}
+	
 }
-
