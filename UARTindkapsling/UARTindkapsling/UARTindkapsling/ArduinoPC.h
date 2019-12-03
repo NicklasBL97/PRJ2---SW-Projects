@@ -18,9 +18,10 @@ class kommunikation
 	public:
 		kommunikation();
 		
-		bool CharReady();
-		char ReadChar();
 		
+		char ReadChar();
+	private:
+		bool CharReady();	
 	
 	
 };

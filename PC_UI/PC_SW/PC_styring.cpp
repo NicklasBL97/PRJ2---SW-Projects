@@ -89,7 +89,13 @@ void PC_styring::SetMode(int m)
 					mode_.GetOpvaagningstid(test_otimer, test_omin);
 					if (test_otimer == tidnutimer && test_omin == tidnumin)
 					{
-						Uart_.sendExample(3, 9600, 1); //SEND DATA TÆND LED
+						if (Uart_.sendExample(3, 9600, 1)) //SEND DATA TÆND LED
+						{
+						}
+						else
+						{
+							display_.ComClosed();
+						}
 					}
 				}
 				else if (mode_.GetNatTidOenske())
@@ -98,7 +104,13 @@ void PC_styring::SetMode(int m)
 					mode_.GetNatTid(test_ntimer, test_nmin);
 					if (test_ntimer == tidnutimer && test_nmin == tidnumin)
 					{
-						Uart_.sendExample(3, 9600, 2);//SEND DATA SLUK LED
+						if (Uart_.sendExample(3, 9600, 2)) //SEND DATA SLUK LED
+						{
+						}
+						else
+						{
+							display_.ComClosed();
+						}
 					}
 				}
 			}

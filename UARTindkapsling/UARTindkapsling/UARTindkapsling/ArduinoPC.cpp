@@ -14,11 +14,12 @@
 kommunikation::kommunikation()
 {
 	
+	//UART gøres klar til at modtage
+	UCSR0A = 0b00100000;
+	
 	//UART sættes til receiver og transmitter mode.
 	UCSR0B = 0b00011000;
 	
-	//UART gøres klar til at modtage
-	UCSR0A = 0b00100000;
 	
 	//UART sættes til 5 databits. 
 	
@@ -39,14 +40,45 @@ bool kommunikation::CharReady()
 char kommunikation::ReadChar()
 {
 	
+	
 	if ( CharReady())
 	{
 	
-	// Then return it
-	return UDR0;
+		char test = UDR0;
+		
+		if ( test == 1)
+		{
+			PORTB &= 0b00000000;
+			PORTB |= 0b00000001;
+			
+			return 1;
+		}
+		else if (test == 2)
+		{
+			PORTB &= 0b00000000;
+			PORTB |= 0b00000010;
+			return 2;
+		}
+		else if (test== 3)
+		{
+			PORTB &= 0b00000000;
+			PORTB |= 0b00000011;
+			return 3;
+		}
+		else if (test == 4)
+		{
+			PORTB &= 0b00000000;
+			PORTB |= 0b00000100;
+			return 4;
+		}
+		else
+		{
+			PORTB &= 0b00000000;
+			PORTB |= 0b10000000;
+			return 0;
+		}
 	}
-	else 
-	return 0;
 }
+
 
 
