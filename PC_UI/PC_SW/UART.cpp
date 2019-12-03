@@ -102,7 +102,7 @@ bool CSerial::sendExample(int port, int baudRate, int sendteTal)
 	if (sendteTal == 1)
 	{
 		data[0] = '1';
-		s->SendData(data, 4);
+		s->SendData(data, 1);
 	}
 	else if (sendteTal == 2)
 	{
