@@ -3,6 +3,9 @@
 using namespace std;
 class PC_display
 {
+private:
+	void PrintTid(const char* pretxt, int t, int m, const char* posttxt="");
+
 public:
 	PC_display();
 	void PrintModevalg();
