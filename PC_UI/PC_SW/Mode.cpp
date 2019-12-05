@@ -20,7 +20,7 @@ void Mode::SetMode_id(int id)
 {
 	if (4 < id || id < 0)
 	{
-		mode_id = 4;
+		mode_id = 2; 
 	}
 	else
 	{

@@ -1,10 +1,15 @@
 #include "PC_display.h"
+#include <iomanip>
 
 
 PC_display::PC_display()
 {
 }
 
+void PC_display::PrintTid(const char* pretxt, int t, int m, const char* posttxt)
+{
+	cout << pretxt << setfill('0') << setw(2) << t << ":" << setfill('0') << setw(2) << m << posttxt;
+}
 
 void PC_display::PrintModevalg()
 {
@@ -59,7 +64,8 @@ void PC_display::PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, in
 		cout << "Opvaagningsprogram er valgt\n";
 		if (ov == true)
 		{
-			cout << "Opvaagnings tid er indstillet til: " << otime << ":" << omin << endl;
+			//cout << "Opvaagnings tid er indstillet til: " << setfill('0') << setw(2) << otime << ":" << setfill('0') << setw(2) << omin << endl;
+			PrintTid("Opvaagnings tid er indstillet til: ", otime, omin, "\n");
 		}
 		else
 		{
@@ -67,7 +73,8 @@ void PC_display::PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, in
 		}
 		if (nv == true)
 		{
-			cout << "Nat tid er indstillet til: " << ntime << ":" << nmin << endl;
+			//cout << "Nat tid er indstillet til: " << setfill('0') << setw(2) << ntime << ":" << setfill('0') << setw(2) << nmin << endl;
+			PrintTid("Nat tid er indstillet til: ", ntime, nmin, "\n");
 		}
 		else
 		{
@@ -80,7 +87,9 @@ void PC_display::PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, in
 		cout << "Tyverisikringsprogram er valgt\n";
 		if (ov == true)
 		{
-			cout << "Opvaagnings tid er indstillet til: " << otime << ":" << omin << endl;
+			//cout << "Opvaagnings tid er indstillet til: " << setfill('0') << setw(2) << otime << ":" << setfill('0') << setw(2) << omin << endl;
+			PrintTid("Opvaagnings tid er indstillet til: ", otime, omin, "\n");
+
 		}
 		else
 		{
@@ -88,7 +97,9 @@ void PC_display::PrintModeInfo(int id, bool ov, int otime, int omin, bool nv, in
 		}
 		if (nv == true)
 		{
-			cout << "Nat tid er indstillet til: " << ntime << ":" << nmin << endl;
+			//cout << "Nat tid er indstillet til: " << setfill('0') << setw(2) << ntime << ":" << setfill('0') << setw(2) << nmin << endl;
+			PrintTid("Nat tid er indstillet til: ", ntime, nmin, "\n");
+
 		}
 		else
 		{
@@ -113,7 +124,9 @@ void PC_display::PrintModeAktiveret(int id, bool ov, int otime, int omin, bool n
 		cout << "Opvaagningsprogram er valgt\n";
 		if (ov == true)
 		{
-			cout << "Opvaagnings tid er indstillet til: " << otime << ":" << omin << endl;
+			//cout << "Opvaagnings tid er indstillet til: " << setfill('0') << setw(2) << otime << ":" << setfill('0') << setw(2) << omin << endl;
+			PrintTid("Opvaagnings tid er indstillet til: ", otime, omin, "\n");
+
 		}
 		else
 		{
@@ -121,7 +134,9 @@ void PC_display::PrintModeAktiveret(int id, bool ov, int otime, int omin, bool n
 		}
 		if (nv == true)
 		{
-			cout << "Nat tid er indstillet til: " << ntime << ":" << nmin << endl;
+			//cout << "Nat tid er indstillet til: " << setfill('0') << setw(2) << ntime << ":" << setfill('0') << setw(2) << nmin << endl;
+			PrintTid("Nat tid er indstillet til: ", ntime, nmin, "\n");
+
 		}
 		else
 		{
@@ -134,7 +149,9 @@ void PC_display::PrintModeAktiveret(int id, bool ov, int otime, int omin, bool n
 		cout << "Tyverisikringsprogram er valgt\n";
 		if (ov == true)
 		{
-			cout << "Opvaagnings tid er indstillet til: " << otime << ":" << omin << endl;
+			//cout << "Opvaagnings tid er indstillet til: " << setfill('0') << setw(2) << otime << ":" << setfill('0') << setw(2) << omin << endl;
+			PrintTid("Opvaagnings tid er indstillet til: ", otime, omin, "\n");
+
 		}
 		else
 		{
@@ -142,7 +159,9 @@ void PC_display::PrintModeAktiveret(int id, bool ov, int otime, int omin, bool n
 		}
 		if (nv == true)
 		{
-			cout << "Nat tid er indstillet til: " << ntime << ":" << nmin << endl;
+			//cout << "Nat tid er indstillet til: " << setfill('0') << setw(2) << ntime << ":" << setfill('0') << setw(2) << nmin << endl;
+			PrintTid("Nat tid er indstillet til: ", ntime, nmin, "\n");
+
 		}
 		else
 		{
