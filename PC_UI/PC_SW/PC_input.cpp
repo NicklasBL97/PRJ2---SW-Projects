@@ -64,3 +64,13 @@ bool PC_input::GodkendInfo()
 	else
 		return false;
 }
+
+int PC_input::SendStyringsValg()
+{
+	int valg;
+	cin >> valg;
+	if (valg < 1 || valg > 4)
+		return 0;
+	else
+		return valg;
+}

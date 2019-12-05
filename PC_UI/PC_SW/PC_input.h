@@ -11,5 +11,6 @@ public:
 	bool VaelgNatTidsValg();
 	void SendNatTid(int&, int&);
 	bool GodkendInfo();	
+	int SendStyringsValg();
 };
 

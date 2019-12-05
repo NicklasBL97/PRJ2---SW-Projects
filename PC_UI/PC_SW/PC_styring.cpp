@@ -45,7 +45,48 @@ void PC_styring::SetMode(int m)
 	mode_.SetMode_id(m);
 	if (mode_.GetMode_id() == 1)
 	{
-		
+		display_.PrintHvadSkalStyres();
+		int valg = input_.SendStyringsValg();
+		if (valg == 1)
+		{
+			if (Uart_.sendExample(3, 9600, 1)) //SEND DATA TÆND LED
+			{
+			}
+			else
+			{
+				display_.ComClosed();
+			}
+		}
+		else if (valg == 2)
+		{
+			if (Uart_.sendExample(3, 9600, 2)) //SEND DATA TÆND LED
+			{
+			}
+			else
+			{
+				display_.ComClosed();
+			}
+		}
+		else if (valg == 3)
+		{
+			if (Uart_.sendExample(3, 9600, 3)) //SEND DATA TÆND LED
+			{
+			}
+			else
+			{
+				display_.ComClosed();
+			}
+		}
+		else if (valg == 4)
+		{
+			if (Uart_.sendExample(3, 9600, 4)) //SEND DATA TÆND LED
+			{
+			}
+			else
+			{
+				display_.ComClosed();
+			}
+		}
 	}
 	else if (mode_.GetMode_id() == 2)
 	{
@@ -156,7 +197,13 @@ void PC_styring::SetMode(int m)
 					mode_.GetOpvaagningstid(test_otimer, test_omin);
 					if (test_otimer == tidnutimer && test_omin == tidnumin)
 					{
-						//SEND DATA TÆND LED
+						if (Uart_.sendExample(3, 9600, 1)) //SEND DATA TÆND LED
+						{
+						}
+						else
+						{
+							display_.ComClosed();
+						}
 
 						//Ændre mode til en ny "random" tid
 						test_omin = test_omin + ((rand() - rand()) % 10);
@@ -171,7 +218,13 @@ void PC_styring::SetMode(int m)
 					mode_.GetNatTid(test_ntimer, test_nmin);
 					if (test_ntimer == tidnutimer && test_nmin == tidnumin)
 					{
-						//SEND DATA SLUK LED
+						if (Uart_.sendExample(3, 9600, 2)) //SEND DATA SLUK LED
+						{
+						}
+						else
+						{
+							display_.ComClosed();
+						}
 
 						//Ændre mode til en ny "random" tid
 						test_nmin = test_nmin + ((rand() - rand()) % 10);
