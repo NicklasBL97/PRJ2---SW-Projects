@@ -95,6 +95,7 @@ bool CSerial::sendExample(int port, int baudRate, int sendteTal)
 	if (!s->Open(port, baudRate))
 	{
 		return false;
+	
 	}
 
 

@@ -122,7 +122,6 @@ void PC_styring::SetMode(int m)
 				// Omregn tid nu til timer på dagen, ved at tage antal sek på en dag og lave til timer, også modulos 60
 				// + 1 for at gå til rigtige tids zone og modulos 24 for at sikre man ikke går over 24
 				int tidnutimer = (((tidnusek / 3600) % 60) + 1) % 24;
-
 				//Henter nu mode tider til at sammenligne
 				if (mode_.GetOpvaagningsOenske())
 				{ 
@@ -132,6 +131,21 @@ void PC_styring::SetMode(int m)
 					{
 						if (Uart_.sendExample(3, 9600, 1)) //SEND DATA TÆND LED
 						{
+							int i = 0;
+							bool loopBool = true;
+							while (loopBool == true)
+							{
+								Sleep(100);
+								i++;
+								if (i >= 600)
+								{
+									loopBool = false;
+								}
+								else if (_kbhit())
+								{
+									loopBool = false;
+								}
+							}
 						}
 						else
 						{
@@ -139,7 +153,7 @@ void PC_styring::SetMode(int m)
 						}
 					}
 				}
-				else if (mode_.GetNatTidOenske())
+				if (mode_.GetNatTidOenske())
 				{
 					int test_nmin, test_ntimer;
 					mode_.GetNatTid(test_ntimer, test_nmin);
@@ -147,6 +161,21 @@ void PC_styring::SetMode(int m)
 					{
 						if (Uart_.sendExample(3, 9600, 2)) //SEND DATA SLUK LED
 						{
+							int i = 0;
+							bool loopBool = true;
+							while (loopBool == true)
+							{
+								Sleep(100);
+								i++;
+								if (i >= 600)
+								{
+									loopBool = false;
+								}
+								else if (_kbhit())
+								{
+									loopBool = false;
+								}
+							}
 						}
 						else
 						{
@@ -199,6 +228,21 @@ void PC_styring::SetMode(int m)
 					{
 						if (Uart_.sendExample(3, 9600, 1)) //SEND DATA TÆND LED
 						{
+							int i = 0;
+							bool loopBool = true;
+							while (loopBool == true)
+							{
+								Sleep(100);
+								i++;
+								if (i >= 600)
+								{
+									loopBool = false;
+								}
+								else if (_kbhit())
+								{
+									loopBool = false;
+								}
+							}
 						}
 						else
 						{
@@ -220,6 +264,21 @@ void PC_styring::SetMode(int m)
 					{
 						if (Uart_.sendExample(3, 9600, 2)) //SEND DATA SLUK LED
 						{
+							int i = 0;
+							bool loopBool = true;
+							while (loopBool == true)
+							{
+								Sleep(100);
+								i++;
+								if (i >= 600)
+								{
+									loopBool = false;
+								}
+								else if (_kbhit())
+								{
+									loopBool = false;
+								}
+							}
 						}
 						else
 						{
