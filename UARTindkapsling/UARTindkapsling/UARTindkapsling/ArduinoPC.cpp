@@ -27,6 +27,7 @@ kommunikation::kommunikation()
 	
 	//Baudrate sættes til 9600
 	UBRR0 = 0b01100111;
+	
 
 	
 	
@@ -50,7 +51,6 @@ char kommunikation::ReadChar()
 		{
 			PORTB &= 0b00000000;
 			PORTB |= 0b00000001;
-			
 			return 1;
 		}
 		else if (test == 2)
@@ -78,15 +78,17 @@ char kommunikation::ReadChar()
 			return 0;
 		}
 	}
+	return 0;
+	
 }
 
-void SendChar(char dataSend)
+void kommunikation :: SendChar(char data)
 {
 	// Wait for transmitter register empty (ready for new character)
 	while ((UCSR0A & (1 << 5)) == 0)
 	{
 	}
 	// Then send the character
-	UDR0 = dataSend;
+	UDR0 = data;
 }
 
