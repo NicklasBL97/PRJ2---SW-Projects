@@ -1,5 +1,4 @@
 #include "X10Handler.h"
-
 X10Handler::X10Handler()
 :done_(true),newMode_(0b00000000),sendCnt_(0)
 {
@@ -77,6 +76,10 @@ void X10Handler::sendMode(char bitNumber)
 		done_ = false;
 		
 	}
+}
+
+bool X10Handler::getDone(){
+	return done_;
 }
 
 void X10Handler::sendNextBit(){

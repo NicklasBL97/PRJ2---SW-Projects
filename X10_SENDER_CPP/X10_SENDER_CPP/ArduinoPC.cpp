@@ -11,7 +11,7 @@
 
 
 
-kommunikation::kommunikation()
+Kom::Kom()
 {
 	
 	//UART gøres klar til at modtage og sende
@@ -33,23 +33,23 @@ kommunikation::kommunikation()
 	
 }
 
-bool kommunikation::CharReady()
+bool Kom::CharReady()
 {
 	return UCSR0A & (1<<7);
 }
 
-char kommunikation::ReadChar()
+char Kom::ReadChar()
 {
-	
 	
 	if ( CharReady())
 	{
 		return UDR0;
 	}
 	return 0;
+	
 }
 
-void kommunikation :: SendChar(char data)
+void Kom::SendChar(char data)
 {
 	// Wait for transmitter register empty (ready for new character)
 	while ((UCSR0A & (1 << 5)) == 0)

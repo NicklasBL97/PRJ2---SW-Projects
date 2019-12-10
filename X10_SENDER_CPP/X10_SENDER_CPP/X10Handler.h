@@ -20,6 +20,7 @@ public:
 	void correctionTimer();
 	void stopCorrection();
 	void sendMode(char bitNumber);
+	bool getDone();
 	void sendNextBit();
 	
 	//public attributes to access in interrupts

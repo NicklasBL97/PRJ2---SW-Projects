@@ -21,9 +21,9 @@ int main(void)
 	
     while (1) 
     {
-		unsigned char data = '0';
+		char data = 0;
 		data = com.ReadChar();
-		if (data == '1' || data == '2' || data == '3' || data == '4')
+		if (data == 1 || data == 2 || data == 3 || data == 4)
 		{
 			com.SendChar(data);
 		}

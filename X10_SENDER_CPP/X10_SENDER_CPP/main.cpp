@@ -7,7 +7,9 @@
 #include "avr/interrupt.h"
 #include <avr/io.h>
 #include "X10Handler.h"
+#include "ArduinoPC.h"
 
+Kom k;
 X10Handler x10hand;
 
 ISR(INT0_vect)	//ZeroCross interrupt
@@ -35,8 +37,18 @@ ISR(TIMER3_OVF_vect)	//timer overflow interrupt to end burst
 int main(void)
 {
 	sei();
-	//x10hand.sendMode(0b10101010);  //test of send mode
-	while(1){}
+	
+	while(1)
+	{
+		char data = 0;
+		data = k.ReadChar();
+		if(data > 0 && data < 5)
+		{
+			while(!x10hand.getDone()){}
+					x10hand.sendMode(data);
+					k.SendChar(data);
+		}
+	}
 	
 	return 0;
 }
