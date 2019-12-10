@@ -87,28 +87,22 @@ BOOL CSerial::Close( void )
 
 }
 
-bool CSerial::sendExample(int port, int baudRate, int sendteTal)
+void CSerial::sendExample(int port, int baudRate, int sendteTal)
 {
 	char data[1];
-
 	CSerial * s = new CSerial();
-	if (!s->Open(port, baudRate))
-	{
-		return false;
-	
-	}
-
-
-	// Sending a string of 4 characters
+	// Sending a string of 1 characters
 	if (sendteTal == 1)
 	{
 		data[0] = 1;
 		s->SendData(data, 1);
+		
 	}
 	else if (sendteTal == 2)
 	{
 		data[0] = 2;
 		s->SendData(data, 1);
+		
 	}
 	else if (sendteTal == 3)
 	{
@@ -121,11 +115,10 @@ bool CSerial::sendExample(int port, int baudRate, int sendteTal)
 		s->SendData(data, 1);
 	}
 
-	s->Close();
-
+	
 	delete s;
 
-	return true;
+	//return true;
 }
 
 BOOL CSerial::WriteCommByte( unsigned char ucByte )

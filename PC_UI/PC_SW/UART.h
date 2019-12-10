@@ -31,7 +31,7 @@ public:
 
 	BOOL IsOpened( void ){ return( m_bOpened ); }
 
-	bool sendExample(int port, int baudRate, int sendteTal);
+	void sendExample(int port, int baudRate, int sendteTal);
 protected:
 	BOOL WriteCommByte( unsigned char );
 

@@ -29,8 +29,5 @@ public:
 	void GetMode();
 	void UdskrivModeInfo();
 	void UdskrivModeAktiveret();
-	void SendKommando(int);
-	void SpoergEfterStyringsValg();
-	void ToggleValgtStyring(int);
 };
 
