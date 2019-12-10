@@ -18,7 +18,7 @@ class kommunikation
 	public:
 		kommunikation();
 		
-		
+		void SendChar(char);
 		char ReadChar();
 	private:
 		bool CharReady();	

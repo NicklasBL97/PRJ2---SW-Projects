@@ -45,46 +45,62 @@ void PC_styring::SetMode(int m)
 	mode_.SetMode_id(m);
 	if (mode_.GetMode_id() == 1)
 	{
-		display_.PrintHvadSkalStyres();
-		int valg = input_.SendStyringsValg();
-		if (valg == 1)
+		if (Uart_.Open(3, 9600) != true)
 		{
-			if (Uart_.sendExample(3, 9600, 1)) //SEND DATA TÆND LED
-			{
-			}
-			else
-			{
-				display_.ComClosed();
-			}
+			display_.ComClosed();
+			Sleep(1000);
 		}
-		else if (valg == 2)
+		else
 		{
-			if (Uart_.sendExample(3, 9600, 2)) //SEND DATA TÆND LED
+			display_.PrintHvadSkalStyres();
+			int valg = input_.SendStyringsValg();
+			if (valg == 1)
 			{
+				Uart_.sendExample(3, 9600, 1); //SEND DATA TÆND LED
+				Sleep(1000);
+				char data[1];
+				CSerial * s = new CSerial();
+				if (Uart_.ReadData(data, 1) != 1)
+				{
+					display_.ComClosed();
+				}
+				delete s;
 			}
-			else
+			else if (valg == 2)
 			{
-				display_.ComClosed();
+				Uart_.sendExample(3, 9600, 2); //SEND DATA TÆND LED
+				Sleep(1000);
+				char data[1];
+				CSerial * s = new CSerial();
+				if (Uart_.ReadData(data, 1) != 1)
+				{
+					display_.ComClosed();
+				}
+				delete s;
 			}
-		}
-		else if (valg == 3)
-		{
-			if (Uart_.sendExample(3, 9600, 3)) //SEND DATA TÆND LED
+			else if (valg == 3)
 			{
+				Uart_.sendExample(3, 9600, 3); //SEND DATA TÆND LED
+				Sleep(1000);
+				char data[1];
+				CSerial * s = new CSerial();
+				if (Uart_.ReadData(data, 1) != 1)
+				{
+					display_.ComClosed();
+				}
+				delete s;
 			}
-			else
+			else if (valg == 4)
 			{
-				display_.ComClosed();
-			}
-		}
-		else if (valg == 4)
-		{
-			if (Uart_.sendExample(3, 9600, 4)) //SEND DATA TÆND LED
-			{
-			}
-			else
-			{
-				display_.ComClosed();
+				Uart_.sendExample(3, 9600, 4); //SEND DATA TÆND LED
+				Sleep(1000);
+				char data[1];
+				CSerial * s = new CSerial();
+				if (Uart_.ReadData(data, 1) != 1)
+				{
+					display_.ComClosed();
+				}
+				delete s;
 			}
 		}
 	}
@@ -94,50 +110,64 @@ void PC_styring::SetMode(int m)
 	}
 	else if (mode_.GetMode_id() == 3)
 	{
-		SpoergEfterOpvaagningOenskes();
-		if (mode_.GetOpvaagningsOenske() == true)
+		if (Uart_.Open(3, 9600) != true)
 		{
-			SpoergEfterOpvaagningsTidspunkt();
+			display_.ComClosed();
+			Sleep(1000);
 		}
-		SpoergEfterNatTidOensket();
-		if (mode_.GetNatTidOenske() == true)
+		else
 		{
-			SpoergEfterNatTidspunkt();
-		}
-		UdskrivModeInfo();
-		if (input_.GodkendInfo())
-		{
-			UdskrivModeAktiveret();
-			_sleep(500);
-			while (_kbhit() == false)
+			SpoergEfterOpvaagningOenskes();
+			if (mode_.GetOpvaagningsOenske() == true)
 			{
-				_sleep(1000);
-				//henter og udskriver tiden fra PC
-				auto tid = std::chrono::system_clock::now();
-				std::time_t tidnu = std::chrono::system_clock::to_time_t(tid);
-				// Omregn tid nu(sek siden 1970) til sekunder på dagen, ved at tage modulos til antal sek på en dag.
-				int tidnusek = tidnu % 86400;
-				// Omregn tid nu til min på dagen, ved at tage antal sek på en dag og lave til min, også modulos 60
-				int tidnumin = (tidnusek / 60) % 60;
-				// Omregn tid nu til timer på dagen, ved at tage antal sek på en dag og lave til timer, også modulos 60
-				// + 1 for at gå til rigtige tids zone og modulos 24 for at sikre man ikke går over 24
-				int tidnutimer = (((tidnusek / 3600) % 60) + 1) % 24;
-				//Henter nu mode tider til at sammenligne
-				if (mode_.GetOpvaagningsOenske())
-				{ 
-					int test_omin, test_otimer;
-					mode_.GetOpvaagningstid(test_otimer, test_omin);
-					if (test_otimer == tidnutimer && test_omin == tidnumin)
+				SpoergEfterOpvaagningsTidspunkt();
+			}
+			SpoergEfterNatTidOensket();
+			if (mode_.GetNatTidOenske() == true)
+			{
+				SpoergEfterNatTidspunkt();
+			}
+			UdskrivModeInfo();
+			if (input_.GodkendInfo())
+			{
+				UdskrivModeAktiveret();
+				_sleep(500);
+				while (_kbhit() == false)
+				{
+					_sleep(1000);
+					//henter og udskriver tiden fra PC
+					auto tid = std::chrono::system_clock::now();
+					std::time_t tidnu = std::chrono::system_clock::to_time_t(tid);
+					// Omregn tid nu(sek siden 1970) til sekunder på dagen, ved at tage modulos til antal sek på en dag.
+					int tidnusek = tidnu % 86400;
+					// Omregn tid nu til min på dagen, ved at tage antal sek på en dag og lave til min, også modulos 60
+					int tidnumin = (tidnusek / 60) % 60;
+					// Omregn tid nu til timer på dagen, ved at tage antal sek på en dag og lave til timer, også modulos 60
+					// + 1 for at gå til rigtige tids zone og modulos 24 for at sikre man ikke går over 24
+					int tidnutimer = (((tidnusek / 3600) % 60) + 1) % 24;
+					//Henter nu mode tider til at sammenligne
+					if (mode_.GetOpvaagningsOenske())
 					{
-						if (Uart_.sendExample(3, 9600, 1)) //SEND DATA TÆND LED
+						int test_omin, test_otimer;
+						mode_.GetOpvaagningstid(test_otimer, test_omin);
+						if (test_otimer == tidnutimer && test_omin == tidnumin)
 						{
-							int i = 0;
+							Uart_.sendExample(3, 9600, 1); //SEND DATA TÆND LED
+							Sleep(1000);
+							char data[1];
+							CSerial * s = new CSerial();
+							if (Uart_.ReadData(data, 1) != 1)
+							{
+								display_.ComClosed();
+							}
+							delete s;
+							int timer = 0;
 							bool loopBool = true;
 							while (loopBool == true)
 							{
 								Sleep(100);
-								i++;
-								if (i >= 600)
+								timer++;
+								if (timer >= 590)
 								{
 									loopBool = false;
 								}
@@ -146,28 +176,30 @@ void PC_styring::SetMode(int m)
 									loopBool = false;
 								}
 							}
-						}
-						else
-						{
-							display_.ComClosed();
 						}
 					}
-				}
-				if (mode_.GetNatTidOenske())
-				{
-					int test_nmin, test_ntimer;
-					mode_.GetNatTid(test_ntimer, test_nmin);
-					if (test_ntimer == tidnutimer && test_nmin == tidnumin)
+					if (mode_.GetNatTidOenske())
 					{
-						if (Uart_.sendExample(3, 9600, 2)) //SEND DATA SLUK LED
+						int test_nmin, test_ntimer;
+						mode_.GetNatTid(test_ntimer, test_nmin);
+						if (test_ntimer == tidnutimer && test_nmin == tidnumin)
 						{
-							int i = 0;
+							Uart_.sendExample(3, 9600, 2); //SEND DATA SLUK LED
+							Sleep(1000);
+							char data[1];
+							CSerial * s = new CSerial();
+							if (Uart_.ReadData(data, 1) != 1)
+							{
+								display_.ComClosed();
+							}
+							delete s;
+							int timer = 0;
 							bool loopBool = true;
 							while (loopBool == true)
 							{
 								Sleep(100);
-								i++;
-								if (i >= 600)
+								timer++;
+								if (timer >= 590)
 								{
 									loopBool = false;
 								}
@@ -176,65 +208,74 @@ void PC_styring::SetMode(int m)
 									loopBool = false;
 								}
 							}
-						}
-						else
-						{
-							display_.ComClosed();
 						}
 					}
 				}
 			}
 		}
-		
 	}
 	else if (mode_.GetMode_id() == 4)
 	{
-		SpoergEfterOpvaagningOenskes();
-		if (mode_.GetOpvaagningsOenske() == true)
+		if (Uart_.Open(3, 9600) != true)
 		{
-			SpoergEfterOpvaagningsTidspunkt();
+			display_.ComClosed();
+			Sleep(1000);
 		}
-		SpoergEfterNatTidOensket();
-		if (mode_.GetNatTidOenske() == true)
+		else
 		{
-			SpoergEfterNatTidspunkt();
-		}
-		UdskrivModeInfo();
-		if (input_.GodkendInfo())
-		{
-			UdskrivModeAktiveret();
-			_sleep(500);
-			srand(time(0));
-			while (_kbhit() == false)
+			SpoergEfterOpvaagningOenskes();
+			if (mode_.GetOpvaagningsOenske() == true)
 			{
-				_sleep(1000);
-				//henter og udskriver tiden fra PC
-				auto tid = std::chrono::system_clock::now();
-				std::time_t tidnu = std::chrono::system_clock::to_time_t(tid);
-				// Omregn tid nu(sek siden 1970) til sekunder på dagen, ved at tage modulos til antal sek på en dag.
-				int tidnusek = tidnu % 86400;
-				// Omregn tid nu til min på dagen, ved at tage antal sek på en dag og lave til min, også modulos 60
-				int tidnumin = (tidnusek / 60) % 60;
-				// Omregn tid nu til timer på dagen, ved at tage antal sek på en dag og lave til timer, også modulos 60
-				// + 1 for at gå til rigtige tids zone og modulos 24 for at sikre man ikke går over 24
-				int tidnutimer = (((tidnusek / 3600) % 60) + 1) % 24;
-
-				//Henter nu mode tider til at sammenligne
-				if (mode_.GetOpvaagningsOenske())
+				SpoergEfterOpvaagningsTidspunkt();
+			}
+			SpoergEfterNatTidOensket();
+			if (mode_.GetNatTidOenske() == true)
+			{
+				SpoergEfterNatTidspunkt();
+			}
+			UdskrivModeInfo();
+			if (input_.GodkendInfo())
+			{
+				UdskrivModeAktiveret();
+				_sleep(500);
+				srand(time(0));
+				while (_kbhit() == false)
 				{
-					int test_omin, test_otimer;
-					mode_.GetOpvaagningstid(test_otimer, test_omin);
-					if (test_otimer == tidnutimer && test_omin == tidnumin)
+					_sleep(1000);
+					//henter og udskriver tiden fra PC
+					auto tid = std::chrono::system_clock::now();
+					std::time_t tidnu = std::chrono::system_clock::to_time_t(tid);
+					// Omregn tid nu(sek siden 1970) til sekunder på dagen, ved at tage modulos til antal sek på en dag.
+					int tidnusek = tidnu % 86400;
+					// Omregn tid nu til min på dagen, ved at tage antal sek på en dag og lave til min, også modulos 60
+					int tidnumin = (tidnusek / 60) % 60;
+					// Omregn tid nu til timer på dagen, ved at tage antal sek på en dag og lave til timer, også modulos 60
+					// + 1 for at gå til rigtige tids zone og modulos 24 for at sikre man ikke går over 24
+					int tidnutimer = (((tidnusek / 3600) % 60) + 1) % 24;
+
+					//Henter nu mode tider til at sammenligne
+					if (mode_.GetOpvaagningsOenske())
 					{
-						if (Uart_.sendExample(3, 9600, 1)) //SEND DATA TÆND LED
+						int test_omin, test_otimer;
+						mode_.GetOpvaagningstid(test_otimer, test_omin);
+						if (test_otimer == tidnutimer && test_omin == tidnumin)
 						{
-							int i = 0;
+							Uart_.sendExample(3, 9600, 1); //SEND DATA TÆND LED
+							Sleep(1000);
+							char data[1];
+							CSerial * s = new CSerial();
+							if (Uart_.ReadData(data, 1) != 1)
+							{
+								display_.ComClosed();
+							}
+							delete s;
+							int timer = 0;
 							bool loopBool = true;
 							while (loopBool == true)
 							{
 								Sleep(100);
-								i++;
-								if (i >= 600)
+								timer++;
+								if (timer >= 590)
 								{
 									loopBool = false;
 								}
@@ -243,34 +284,36 @@ void PC_styring::SetMode(int m)
 									loopBool = false;
 								}
 							}
-						}
-						else
-						{
-							display_.ComClosed();
-						}
 
-						//Ændre mode til en ny "random" tid
-						test_omin = test_omin + ((rand() - rand()) % 10);
-						mode_.SetOpvaagningsTidspunkt_Minutter(test_omin);
-						UdskrivModeAktiveret();
+							//Ændre mode til en ny "random" tid
+							test_omin = test_omin + ((rand() - rand()) % 10);
+							mode_.SetOpvaagningsTidspunkt_Minutter(test_omin);
+							UdskrivModeAktiveret();
 
+						}
 					}
-				}
-				else if (mode_.GetNatTidOenske())
-				{
-					int test_nmin, test_ntimer;
-					mode_.GetNatTid(test_ntimer, test_nmin);
-					if (test_ntimer == tidnutimer && test_nmin == tidnumin)
+					else if (mode_.GetNatTidOenske())
 					{
-						if (Uart_.sendExample(3, 9600, 2)) //SEND DATA SLUK LED
+						int test_nmin, test_ntimer;
+						mode_.GetNatTid(test_ntimer, test_nmin);
+						if (test_ntimer == tidnutimer && test_nmin == tidnumin)
 						{
-							int i = 0;
+							Uart_.sendExample(3, 9600, 2); //SEND DATA SLUK LED
+							Sleep(1000);
+							char data[1];
+							CSerial * s = new CSerial();
+							if (Uart_.ReadData(data, 1) != 1)
+							{
+								display_.ComClosed();
+							}
+							delete s;
+							int timer = 0;
 							bool loopBool = true;
 							while (loopBool == true)
 							{
 								Sleep(100);
-								i++;
-								if (i >= 600)
+								timer++;
+								if (timer >= 590)
 								{
 									loopBool = false;
 								}
@@ -279,23 +322,18 @@ void PC_styring::SetMode(int m)
 									loopBool = false;
 								}
 							}
-						}
-						else
-						{
-							display_.ComClosed();
-						}
 
-						//Ændre mode til en ny "random" tid
-						test_nmin = test_nmin + ((rand() - rand()) % 10);
-						mode_.SetNatTid_Minutter(test_nmin);
-						UdskrivModeAktiveret();
+							//Ændre mode til en ny "random" tid
+							test_nmin = test_nmin + ((rand() - rand()) % 10);
+							mode_.SetNatTid_Minutter(test_nmin);
+							UdskrivModeAktiveret();
+						}
 					}
 				}
 			}
-		}
 
+		}
 	}
-	
 }
 
 void PC_styring::SpoergEfterOpvaagningOenskes()

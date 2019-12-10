@@ -14,7 +14,7 @@
 kommunikation::kommunikation()
 {
 	
-	//UART gøres klar til at modtage
+	//UART gøres klar til at modtage og sende
 	UCSR0A = 0b00100000;
 	
 	//UART sættes til receiver og transmitter mode.
@@ -80,5 +80,13 @@ char kommunikation::ReadChar()
 	}
 }
 
-
+void SendChar(char dataSend)
+{
+	// Wait for transmitter register empty (ready for new character)
+	while ((UCSR0A & (1 << 5)) == 0)
+	{
+	}
+	// Then send the character
+	UDR0 = dataSend;
+}
 

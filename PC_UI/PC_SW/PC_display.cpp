@@ -160,5 +160,5 @@ void PC_display::PrintModeAktiveret(int id, bool ov, int otime, int omin, bool n
 
 void PC_display::ComClosed()
 {
-	cout << "Could not open COM" << endl;
+	cout << "Fejl hos COM port" << endl;
 }
