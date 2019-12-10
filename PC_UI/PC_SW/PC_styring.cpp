@@ -58,49 +58,50 @@ void PC_styring::SetMode(int m)
 			{
 				Uart_.sendExample(3, 9600, 1); //SEND DATA T힟D LED
 				Sleep(1000);
-				char data[1];
-				CSerial * s = new CSerial();
-				if (Uart_.ReadData(data, 1) != 1)
+				char data;
+				Uart_.ReadData(&data, 1);
+				if ( data != 1)
 				{
+					std::cout << (int)data << endl;
 					display_.ComClosed();
 				}
-				delete s;
+				
 			}
 			else if (valg == 2)
 			{
 				Uart_.sendExample(3, 9600, 2); //SEND DATA T힟D LED
 				Sleep(1000);
-				char data[1];
-				CSerial * s = new CSerial();
-				if (Uart_.ReadData(data, 1) != 1)
+				char data;
+				Uart_.ReadData(&data, 1);
+				if (data != 2)
 				{
+					std::cout << (int)data << endl;
 					display_.ComClosed();
 				}
-				delete s;
 			}
 			else if (valg == 3)
 			{
 				Uart_.sendExample(3, 9600, 3); //SEND DATA T힟D LED
 				Sleep(1000);
-				char data[1];
-				CSerial * s = new CSerial();
-				if (Uart_.ReadData(data, 1) != 1)
+				char data;
+				Uart_.ReadData(&data, 1);
+				if (data != 3)
 				{
+					std::cout << (int)data << endl;
 					display_.ComClosed();
 				}
-				delete s;
 			}
 			else if (valg == 4)
 			{
 				Uart_.sendExample(3, 9600, 4); //SEND DATA T힟D LED
 				Sleep(1000);
-				char data[1];
-				CSerial * s = new CSerial();
-				if (Uart_.ReadData(data, 1) != 1)
+				char data;
+				Uart_.ReadData(&data, 1);
+				if (data != 4)
 				{
+					std::cout << (int)data << endl;
 					display_.ComClosed();
 				}
-				delete s;
 			}
 		}
 	}
@@ -154,13 +155,13 @@ void PC_styring::SetMode(int m)
 						{
 							Uart_.sendExample(3, 9600, 1); //SEND DATA T힟D LED
 							Sleep(1000);
-							char data[1];
-							CSerial * s = new CSerial();
-							if (Uart_.ReadData(data, 1) != 1)
+							char data;
+							Uart_.ReadData(&data, 1);
+							if (data != 1)
 							{
+								std::cout << (int)data << endl;
 								display_.ComClosed();
 							}
-							delete s;
 							int timer = 0;
 							bool loopBool = true;
 							while (loopBool == true)
@@ -186,13 +187,13 @@ void PC_styring::SetMode(int m)
 						{
 							Uart_.sendExample(3, 9600, 2); //SEND DATA SLUK LED
 							Sleep(1000);
-							char data[1];
-							CSerial * s = new CSerial();
-							if (Uart_.ReadData(data, 1) != 1)
+							char data;
+							Uart_.ReadData(&data, 1);
+							if (data != 2)
 							{
+								std::cout << (int)data << endl;
 								display_.ComClosed();
 							}
-							delete s;
 							int timer = 0;
 							bool loopBool = true;
 							while (loopBool == true)
@@ -262,13 +263,13 @@ void PC_styring::SetMode(int m)
 						{
 							Uart_.sendExample(3, 9600, 1); //SEND DATA T힟D LED
 							Sleep(1000);
-							char data[1];
-							CSerial * s = new CSerial();
-							if (Uart_.ReadData(data, 1) != 1)
+							char data;
+							Uart_.ReadData(&data, 1);
+							if (data != 1)
 							{
+								std::cout << (int)data << endl;
 								display_.ComClosed();
 							}
-							delete s;
 							int timer = 0;
 							bool loopBool = true;
 							while (loopBool == true)
@@ -300,13 +301,13 @@ void PC_styring::SetMode(int m)
 						{
 							Uart_.sendExample(3, 9600, 2); //SEND DATA SLUK LED
 							Sleep(1000);
-							char data[1];
-							CSerial * s = new CSerial();
-							if (Uart_.ReadData(data, 1) != 1)
+							char data;
+							Uart_.ReadData(&data, 1);
+							if (data != 2)
 							{
+								std::cout << (int)data << endl;
 								display_.ComClosed();
 							}
-							delete s;
 							int timer = 0;
 							bool loopBool = true;
 							while (loopBool == true)

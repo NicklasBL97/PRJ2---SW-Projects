@@ -25,7 +25,7 @@ public:
 	BOOL Open( int nPort = 2, int nBaud = 9600 );
 	BOOL Close( void );
 
-	int ReadData( void *, int );
+	int ReadData( char *, int );
 	int SendData( const char *, int );
 	int ReadDataWaiting( void );
 

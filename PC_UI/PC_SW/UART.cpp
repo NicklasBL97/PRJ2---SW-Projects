@@ -90,35 +90,29 @@ BOOL CSerial::Close( void )
 void CSerial::sendExample(int port, int baudRate, int sendteTal)
 {
 	char data[1];
-	CSerial * s = new CSerial();
 	// Sending a string of 1 characters
 	if (sendteTal == 1)
 	{
 		data[0] = 1;
-		s->SendData(data, 1);
+		SendData(data, 1);
 		
 	}
 	else if (sendteTal == 2)
 	{
 		data[0] = 2;
-		s->SendData(data, 1);
+		SendData(data, 1);
 		
 	}
 	else if (sendteTal == 3)
 	{
 		data[0] = 3;
-		s->SendData(data, 1);
+		SendData(data, 1);
 	}
 	else if (sendteTal == 4)
 	{
 		data[0] = 4;
-		s->SendData(data, 1);
+		SendData(data, 1);
 	}
-
-	
-	delete s;
-
-	//return true;
 }
 
 BOOL CSerial::WriteCommByte( unsigned char ucByte )
@@ -169,7 +163,7 @@ int CSerial::ReadDataWaiting( void )
 
 }
 
-int CSerial::ReadData( void *buffer, int limit )
+int CSerial::ReadData( char *buffer, int limit )
 {
 
 	if( !m_bOpened || m_hIDComDev == NULL ) return( 0 );
