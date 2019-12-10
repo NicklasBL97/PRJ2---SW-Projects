@@ -17,6 +17,8 @@ public:
 	void startBurst();
 	void stopBurst();
 	void burstTimer(int ms);
+	void correctionTimer();
+	void stopCorrection();
 	void sendMode(char bitNumber);
 	void sendNextBit();
 	
