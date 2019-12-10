@@ -45,7 +45,48 @@ void PC_styring::SetMode(int m)
 	mode_.SetMode_id(m);
 	if (mode_.GetMode_id() == 1)
 	{
-		
+		display_.PrintHvadSkalStyres();
+		int valg = input_.SendStyringsValg();
+		if (valg == 1)
+		{
+			if (Uart_.sendExample(3, 9600, 1)) //SEND DATA TÆND LED
+			{
+			}
+			else
+			{
+				display_.ComClosed();
+			}
+		}
+		else if (valg == 2)
+		{
+			if (Uart_.sendExample(3, 9600, 2)) //SEND DATA TÆND LED
+			{
+			}
+			else
+			{
+				display_.ComClosed();
+			}
+		}
+		else if (valg == 3)
+		{
+			if (Uart_.sendExample(3, 9600, 3)) //SEND DATA TÆND LED
+			{
+			}
+			else
+			{
+				display_.ComClosed();
+			}
+		}
+		else if (valg == 4)
+		{
+			if (Uart_.sendExample(3, 9600, 4)) //SEND DATA TÆND LED
+			{
+			}
+			else
+			{
+				display_.ComClosed();
+			}
+		}
 	}
 	else if (mode_.GetMode_id() == 2)
 	{
@@ -81,7 +122,6 @@ void PC_styring::SetMode(int m)
 				// Omregn tid nu til timer på dagen, ved at tage antal sek på en dag og lave til timer, også modulos 60
 				// + 1 for at gå til rigtige tids zone og modulos 24 for at sikre man ikke går over 24
 				int tidnutimer = (((tidnusek / 3600) % 60) + 1) % 24;
-
 				//Henter nu mode tider til at sammenligne
 				if (mode_.GetOpvaagningsOenske())
 				{ 
@@ -89,16 +129,58 @@ void PC_styring::SetMode(int m)
 					mode_.GetOpvaagningstid(test_otimer, test_omin);
 					if (test_otimer == tidnutimer && test_omin == tidnumin)
 					{
-						//SEND DATA TÆND LED
+						if (Uart_.sendExample(3, 9600, 1)) //SEND DATA TÆND LED
+						{
+							int i = 0;
+							bool loopBool = true;
+							while (loopBool == true)
+							{
+								Sleep(100);
+								i++;
+								if (i >= 600)
+								{
+									loopBool = false;
+								}
+								else if (_kbhit())
+								{
+									loopBool = false;
+								}
+							}
+						}
+						else
+						{
+							display_.ComClosed();
+						}
 					}
 				}
-				else if (mode_.GetNatTidOenske())
+				if (mode_.GetNatTidOenske())
 				{
 					int test_nmin, test_ntimer;
 					mode_.GetNatTid(test_ntimer, test_nmin);
 					if (test_ntimer == tidnutimer && test_nmin == tidnumin)
 					{
-						//SEND DATA SLUK LED
+						if (Uart_.sendExample(3, 9600, 2)) //SEND DATA SLUK LED
+						{
+							int i = 0;
+							bool loopBool = true;
+							while (loopBool == true)
+							{
+								Sleep(100);
+								i++;
+								if (i >= 600)
+								{
+									loopBool = false;
+								}
+								else if (_kbhit())
+								{
+									loopBool = false;
+								}
+							}
+						}
+						else
+						{
+							display_.ComClosed();
+						}
 					}
 				}
 			}
@@ -144,7 +226,28 @@ void PC_styring::SetMode(int m)
 					mode_.GetOpvaagningstid(test_otimer, test_omin);
 					if (test_otimer == tidnutimer && test_omin == tidnumin)
 					{
-						//SEND DATA TÆND LED
+						if (Uart_.sendExample(3, 9600, 1)) //SEND DATA TÆND LED
+						{
+							int i = 0;
+							bool loopBool = true;
+							while (loopBool == true)
+							{
+								Sleep(100);
+								i++;
+								if (i >= 600)
+								{
+									loopBool = false;
+								}
+								else if (_kbhit())
+								{
+									loopBool = false;
+								}
+							}
+						}
+						else
+						{
+							display_.ComClosed();
+						}
 
 						//Ændre mode til en ny "random" tid
 						test_omin = test_omin + ((rand() - rand()) % 10);
@@ -159,7 +262,28 @@ void PC_styring::SetMode(int m)
 					mode_.GetNatTid(test_ntimer, test_nmin);
 					if (test_ntimer == tidnutimer && test_nmin == tidnumin)
 					{
-						//SEND DATA SLUK LED
+						if (Uart_.sendExample(3, 9600, 2)) //SEND DATA SLUK LED
+						{
+							int i = 0;
+							bool loopBool = true;
+							while (loopBool == true)
+							{
+								Sleep(100);
+								i++;
+								if (i >= 600)
+								{
+									loopBool = false;
+								}
+								else if (_kbhit())
+								{
+									loopBool = false;
+								}
+							}
+						}
+						else
+						{
+							display_.ComClosed();
+						}
 
 						//Ændre mode til en ny "random" tid
 						test_nmin = test_nmin + ((rand() - rand()) % 10);

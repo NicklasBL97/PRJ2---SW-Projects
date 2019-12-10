@@ -3,6 +3,9 @@
 using namespace std;
 class PC_input
 {
+private:
+	void SendGeneriskTid(int & time, int & min);
+
 public:
 	PC_input();	
 	int VaelgNyMode();
@@ -11,5 +14,6 @@ public:
 	bool VaelgNatTidsValg();
 	void SendNatTid(int&, int&);
 	bool GodkendInfo();	
+	int SendStyringsValg();
 };
 

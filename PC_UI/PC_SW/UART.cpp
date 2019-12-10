@@ -1,5 +1,5 @@
 #include "UART.h"
-
+#include <iostream>
 
 CSerial::CSerial()
 {
@@ -85,6 +85,47 @@ BOOL CSerial::Close( void )
 
 	return( TRUE );
 
+}
+
+bool CSerial::sendExample(int port, int baudRate, int sendteTal)
+{
+	char data[1];
+
+	CSerial * s = new CSerial();
+	if (!s->Open(port, baudRate))
+	{
+		return false;
+	
+	}
+
+
+	// Sending a string of 4 characters
+	if (sendteTal == 1)
+	{
+		data[0] = 1;
+		s->SendData(data, 1);
+	}
+	else if (sendteTal == 2)
+	{
+		data[0] = 2;
+		s->SendData(data, 1);
+	}
+	else if (sendteTal == 3)
+	{
+		data[0] = 3;
+		s->SendData(data, 1);
+	}
+	else if (sendteTal == 4)
+	{
+		data[0] = 4;
+		s->SendData(data, 1);
+	}
+
+	s->Close();
+
+	delete s;
+
+	return true;
 }
 
 BOOL CSerial::WriteCommByte( unsigned char ucByte )

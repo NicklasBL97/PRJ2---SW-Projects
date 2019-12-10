@@ -1,5 +1,5 @@
-#ifndef __SERIAL_H__
-#define __SERIAL_H__
+#ifndef __UART_H__
+#define __UART_H__
 #pragma once
 
 #include <Windows.h>
@@ -31,6 +31,7 @@ public:
 
 	BOOL IsOpened( void ){ return( m_bOpened ); }
 
+	bool sendExample(int port, int baudRate, int sendteTal);
 protected:
 	BOOL WriteCommByte( unsigned char );
 

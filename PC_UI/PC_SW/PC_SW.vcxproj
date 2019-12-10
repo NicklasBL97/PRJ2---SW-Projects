@@ -149,7 +149,6 @@
     <ClCompile Include="PC_input.cpp" />
     <ClCompile Include="PC_styring.cpp" />
     <ClCompile Include="UART.cpp" />
-    <ClCompile Include="UARTExample.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mode.h" />
