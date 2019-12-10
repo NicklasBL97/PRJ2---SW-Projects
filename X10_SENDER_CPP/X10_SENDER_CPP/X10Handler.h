@@ -18,12 +18,13 @@ public:
 	void stopBurst();
 	void burstTimer(int ms);
 	void sendMode(char bitNumber);
+	void sendNextBit();
 	
 	//public attributes to access in interrupts
+private:
 	bool done_;
 	int newMode_;
 	char sendCnt_;
-private:
 };
 void initT4Delay();
 void T4Delay(int ms);

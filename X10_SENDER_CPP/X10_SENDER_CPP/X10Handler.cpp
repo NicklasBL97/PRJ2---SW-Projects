@@ -8,7 +8,7 @@ X10Handler::X10Handler()
 	OCR0A = 66;				//Value required for 120kHz output
 	
 	EIMSK |=0b00000101;		//Enable INT0 for ZeroCrossDetector
-	EICRA |=0b00110011;		//Rising edge triggers INT0
+	EICRA |=0b00100010;		//falling edge triggers INT0
 	
 	//set all values for the burst timer
 	TCCR1A = 0;				//normal mode
@@ -61,6 +61,25 @@ void X10Handler::sendMode(char bitNumber)
 		sendCnt_ = 0;
 		done_ = false;
 		
+	}
+}
+
+void X10Handler::sendNextBit(){
+	if(!done_)	//dont send if already done
+	{
+		if(sendCnt_ < 3)	// send first 3 burst to signal an incoming message to receiver
+		{
+			startBurst();
+		}
+		else if(newMode_ & 1<<(sendCnt_-3))		//send one bit at a time starting from MSB, only send burst if bit is high
+		{
+			startBurst();
+		}
+		
+		sendCnt_++;
+		
+		if(sendCnt_ > 18)	//if message send change done flag to true, stops furter transmission until new call of sendCode function
+		done_ = true;
 	}
 }
 
