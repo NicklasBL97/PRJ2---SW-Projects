@@ -2,7 +2,7 @@
  * UARTindkapsling.cpp
  *
  * Created: 03-12-2019 08:56:03
- * Author : asger
+ * Author : nogle gange asger
  */ 
 
 #include <avr/io.h>
@@ -21,10 +21,12 @@ int main(void)
 	
     while (1) 
     {
-		
-	com.ReadChar();
-	
-		
+		unsigned char data = '0';
+		data = com.ReadChar();
+		if (data == '1' || data == '2' || data == '3' || data == '4')
+		{
+			com.SendChar(data);
+		}
 	}
-	
+	return 0;
 }

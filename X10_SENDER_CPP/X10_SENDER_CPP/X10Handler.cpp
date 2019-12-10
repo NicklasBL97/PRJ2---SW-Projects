@@ -4,6 +4,7 @@ X10Handler::X10Handler()
 :done_(true),newMode_(0b00000000),sendCnt_(0)
 {
 	DDRB |= 0b10100001;		//making timer0A and timer1A pin an output
+	DDRE |= 0b00001000;		//making timer3A an output
 	
 	OCR0A = 66;				//Value required for 120kHz output
 	
@@ -14,6 +15,10 @@ X10Handler::X10Handler()
 	TCCR1A = 0;				//normal mode
 	TCCR1B = 0b00000000;	//no prescaler, timer stopped, rest of normal mode
 	TIMSK1 |= 1<<0;			//enable overflow interrupts
+	//set all values for the correction timer
+	TCCR3A = 0;				//normal mode
+	TCCR3B = 0b00000000;	//0 prescaler, timer stopped, rest of normal mode
+	TIMSK3 |= 1<<0;			//enable overflow interrupts
 }
 
 void X10Handler::startBurst(){
@@ -41,6 +46,16 @@ void X10Handler::burstTimer(int ms){
 		}
 		TCCR1B = 0b00000100;	//timer started
 }
+
+void X10Handler::correctionTimer(){
+	TCNT3 = 60737;	//300 us delay with 64 prescaler and 16Mhz clock
+	TCCR3B = 0b0000001;	//timer started prescaler 64
+}
+
+void X10Handler::stopCorrection(){
+	TCCR3B = 0b00000000;	//no prescaler, timer stopped
+}
+
 
 void X10Handler::sendMode(char bitNumber)
 {
