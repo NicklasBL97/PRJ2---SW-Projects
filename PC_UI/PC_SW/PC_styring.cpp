@@ -1,5 +1,5 @@
 #include "PC_styring.h"
-
+#define	portnr 4
 
 
 PC_styring::PC_styring()
@@ -45,7 +45,7 @@ void PC_styring::SetMode(int m)
 	mode_.SetMode_id(m);
 	if (mode_.GetMode_id() == 1)
 	{
-		if (Uart_.Open(3, 9600) != true)
+		if (Uart_.Open(portnr, 9600) != true)
 		{
 			display_.ComClosed();
 			Sleep(1000);
@@ -56,7 +56,7 @@ void PC_styring::SetMode(int m)
 			int valg = input_.SendStyringsValg();
 			if (valg == 1)
 			{
-				Uart_.sendExample(3, 9600, 1); //SEND DATA T힟D LED
+				Uart_.sendExample(portnr, 9600, 1); //SEND DATA T힟D LED
 				Sleep(1000);
 				char data;
 				Uart_.ReadData(&data, 1);
@@ -69,7 +69,7 @@ void PC_styring::SetMode(int m)
 			}
 			else if (valg == 2)
 			{
-				Uart_.sendExample(3, 9600, 2); //SEND DATA T힟D LED
+				Uart_.sendExample(portnr, 9600, 2); //SEND DATA T힟D LED
 				Sleep(1000);
 				char data;
 				Uart_.ReadData(&data, 1);
@@ -81,7 +81,7 @@ void PC_styring::SetMode(int m)
 			}
 			else if (valg == 3)
 			{
-				Uart_.sendExample(3, 9600, 3); //SEND DATA T힟D LED
+				Uart_.sendExample(portnr, 9600, 3); //SEND DATA T힟D LED
 				Sleep(1000);
 				char data;
 				Uart_.ReadData(&data, 1);
@@ -93,7 +93,7 @@ void PC_styring::SetMode(int m)
 			}
 			else if (valg == 4)
 			{
-				Uart_.sendExample(3, 9600, 4); //SEND DATA T힟D LED
+				Uart_.sendExample(portnr, 9600, 4); //SEND DATA T힟D LED
 				Sleep(1000);
 				char data;
 				Uart_.ReadData(&data, 1);
@@ -153,7 +153,7 @@ void PC_styring::SetMode(int m)
 						mode_.GetOpvaagningstid(test_otimer, test_omin);
 						if (test_otimer == tidnutimer && test_omin == tidnumin)
 						{
-							Uart_.sendExample(3, 9600, 1); //SEND DATA T힟D LED
+							Uart_.sendExample(portnr, 9600, 1); //SEND DATA T힟D LED
 							Sleep(1000);
 							char data;
 							Uart_.ReadData(&data, 1);
@@ -185,7 +185,7 @@ void PC_styring::SetMode(int m)
 						mode_.GetNatTid(test_ntimer, test_nmin);
 						if (test_ntimer == tidnutimer && test_nmin == tidnumin)
 						{
-							Uart_.sendExample(3, 9600, 2); //SEND DATA SLUK LED
+							Uart_.sendExample(portnr, 9600, 2); //SEND DATA SLUK LED
 							Sleep(1000);
 							char data;
 							Uart_.ReadData(&data, 1);
@@ -261,7 +261,7 @@ void PC_styring::SetMode(int m)
 						mode_.GetOpvaagningstid(test_otimer, test_omin);
 						if (test_otimer == tidnutimer && test_omin == tidnumin)
 						{
-							Uart_.sendExample(3, 9600, 1); //SEND DATA T힟D LED
+							Uart_.sendExample(portnr, 9600, 1); //SEND DATA T힟D LED
 							Sleep(1000);
 							char data;
 							Uart_.ReadData(&data, 1);
@@ -299,7 +299,7 @@ void PC_styring::SetMode(int m)
 						mode_.GetNatTid(test_ntimer, test_nmin);
 						if (test_ntimer == tidnutimer && test_nmin == tidnumin)
 						{
-							Uart_.sendExample(3, 9600, 2); //SEND DATA SLUK LED
+							Uart_.sendExample(portnr, 9600, 2); //SEND DATA SLUK LED
 							Sleep(1000);
 							char data;
 							Uart_.ReadData(&data, 1);
