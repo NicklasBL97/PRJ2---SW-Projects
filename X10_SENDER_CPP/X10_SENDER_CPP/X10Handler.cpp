@@ -89,7 +89,7 @@ void X10Handler::sendNextBit(){
 		{
 			startBurst();
 		}
-		else if(newMode_ & 1<<(sendCnt_-3))		//send one bit at a time starting from MSB, only send burst if bit is high
+		else if(newMode_ & 1<<(15 - (sendCnt_-3)))		//send one bit at a time starting from MSB, only send burst if bit is high
 		{
 			startBurst();
 		}

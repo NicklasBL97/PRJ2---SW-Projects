@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000bb2  00000000  00000000  00001003  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000002c0  00000000  00000000  00001bb5  2**0
+  8 .debug_line   000000e1  00000000  00000000  00001bb5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000005c  00000000  00000000  00001e78  2**2
+  9 .debug_frame  0000005c  00000000  00000000  00001c98  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000582  00000000  00000000  00001ed4  2**0
+ 10 .debug_str    0000058d  00000000  00000000  00001cf4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000007d  00000000  00000000  00002456  2**0
+ 11 .debug_loc    0000007d  00000000  00000000  00002281  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000018  00000000  00000000  000024d3  2**0
+ 12 .debug_ranges 00000018  00000000  00000000  000022fe  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -231,8 +231,8 @@ int main(void)
 		if (tal == maks)
  14a:	80 91 16 02 	lds	r24, 0x0216	; 0x800216 <__data_end>
  14e:	90 91 17 02 	lds	r25, 0x0217	; 0x800217 <__data_end+0x1>
- 152:	80 91 00 02 	lds	r24, 0x0200	; 0x800200 <__DATA_REGION_ORIGIN__>
- 156:	90 91 01 02 	lds	r25, 0x0201	; 0x800201 <__DATA_REGION_ORIGIN__+0x1>
+ 152:	80 91 00 02 	lds	r24, 0x0200	; 0x800200 <__data_start>
+ 156:	90 91 01 02 	lds	r25, 0x0201	; 0x800201 <__data_start+0x1>
  15a:	f7 cf       	rjmp	.-18     	; 0x14a <main+0x26>
 
 0000015c <__vector_1>:
@@ -302,8 +302,8 @@ ISR (INT0_vect)
 				if (tal >= maks) //her er maks antal bits ganget med 2
  1ba:	20 91 16 02 	lds	r18, 0x0216	; 0x800216 <__data_end>
  1be:	30 91 17 02 	lds	r19, 0x0217	; 0x800217 <__data_end+0x1>
- 1c2:	80 91 00 02 	lds	r24, 0x0200	; 0x800200 <__DATA_REGION_ORIGIN__>
- 1c6:	90 91 01 02 	lds	r25, 0x0201	; 0x800201 <__DATA_REGION_ORIGIN__+0x1>
+ 1c2:	80 91 00 02 	lds	r24, 0x0200	; 0x800200 <__data_start>
+ 1c6:	90 91 01 02 	lds	r25, 0x0201	; 0x800201 <__data_start+0x1>
  1ca:	28 17       	cp	r18, r24
  1cc:	39 07       	cpc	r19, r25
  1ce:	04 f7       	brge	.-64     	; 0x190 <__vector_1+0x34>

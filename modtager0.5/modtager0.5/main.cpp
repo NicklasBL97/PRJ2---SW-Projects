@@ -9,6 +9,20 @@
 #include <avr/interrupt.h>
 #define F_CPU 16000000
 #include <util/delay.h>
+#include "X10Receiver.h"
+
+X10Receiver rec();
+
+ISR(INT0_vect)	//ZeroCross interrupt
+{
+	rec.correctionTimer();
+}
+
+ISR(TIMER3_OVF_vect)	//timer overflow interrupt to end burst
+{
+	
+	rec.stopCorrection();
+}
 
 volatile int tal = 0; // det er et tal som vi bruger til at sammenligne med i interruptet
 volatile bool bit1[19] = {1111001100101100110}; // der kan bruges et bit istedet for int
