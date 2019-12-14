@@ -10,17 +10,17 @@
 #ifndef X10_H_
 #define X10_H_
 
-class X10Handler
+class X10TxIF
 {
 public:
-	X10Handler();
+	X10TxIF();
 	void startBurst();
 	void stopBurst();
 	void burstTimer(int ms);
 	void correctionTimer();
 	void stopCorrection();
 	void sendMode(char bitNumber);
-	bool getDone();
+	bool getDone() const;
 	void sendNextBit();
 	
 	//public attributes to access in interrupts

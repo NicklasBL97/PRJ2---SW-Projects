@@ -177,10 +177,10 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="X10Handler.cpp">
+    <Compile Include="X10TxIF.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="X10Handler.h">
+    <Compile Include="X10TxIF.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

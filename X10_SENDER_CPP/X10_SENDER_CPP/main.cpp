@@ -6,40 +6,40 @@
  */ 
 #include "avr/interrupt.h"
 #include <avr/io.h>
-#include "X10Handler.h"
+#include "X10TxIF.h"
 #include "ArduinoPC.h"
 
 Kom k;
-X10Handler x10hand;
+X10TxIF x10;
 
 ISR(INT0_vect)	//ZeroCross interrupt
 {
-	x10hand.correctionTimer();
+	x10.correctionTimer();
 }
 
 ISR(INT2_vect)	//debugging dummy of zerocross interrupt, can be triggered with PRelec shield SW2
 {
-	x10hand.correctionTimer();
+	x10.correctionTimer();
 }
 
 ISR(TIMER1_OVF_vect)	//timer overflow interrupt to end burst
 {
-	x10hand.stopBurst();
+	x10.stopBurst();
 }
 
 ISR(TIMER3_OVF_vect)	//timer overflow interrupt to end burst
 {
 	
-	x10hand.stopCorrection();
-	x10hand.sendNextBit();
+	x10.stopCorrection();
+	x10.sendNextBit();
 }
 
 int main(void)
 {
 	sei();
 	while(1){
-		if(x10hand.getDone())
-			x10hand.sendMode(0b10100101);
+		if(x10.getDone())
+			x10.sendMode(0b10100101);
 	}
 	//while(1)
 	//{
@@ -47,8 +47,8 @@ int main(void)
 		//data = k.ReadChar();
 		//if(data > 0 && data < 5)
 		//{
-			//while(!x10hand.getDone()){}
-					//x10hand.sendMode(data);
+			//while(!x10.getDone()){}
+					//x10.sendMode(data);
 					//k.SendChar(data);
 		//}
 	//}
