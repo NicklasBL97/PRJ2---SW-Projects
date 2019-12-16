@@ -21,7 +21,7 @@ Kom::Kom()
 	UCSR0B = 0b00011000;
 	
 	
-	//UART sættes til 5 databits. 
+	//UART sættes til 8 databits. 
 	
 	UCSR0C = 0b00000110;
 	
