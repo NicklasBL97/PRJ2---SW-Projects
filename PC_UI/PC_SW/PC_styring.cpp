@@ -111,7 +111,7 @@ void PC_styring::SetMode(int m)
 	}
 	else if (mode_.GetMode_id() == 3)
 	{
-		if (Uart_.Open(3, 9600) != true)
+		if (Uart_.Open(portnr, 9600) != true)
 		{
 			display_.ComClosed();
 			Sleep(1000);
@@ -217,7 +217,7 @@ void PC_styring::SetMode(int m)
 	}
 	else if (mode_.GetMode_id() == 4)
 	{
-		if (Uart_.Open(3, 9600) != true)
+		if (Uart_.Open(portnr, 9600) != true)
 		{
 			display_.ComClosed();
 			Sleep(1000);
