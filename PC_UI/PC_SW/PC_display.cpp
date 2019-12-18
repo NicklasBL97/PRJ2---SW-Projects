@@ -160,7 +160,7 @@ void PC_display::PrintModeAktiveret(int id, bool ov, int otime, int omin, bool n
 
 void PC_display::ComClosed()
 {
-	cout << "Fejl hos COM port" << endl;
+	cout << "Fejl" << endl;
 	_sleep(1000);
 }
 
