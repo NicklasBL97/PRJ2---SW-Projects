@@ -45,9 +45,15 @@ void PC_styring::SetMode(int m)
 	mode_.SetMode_id(m);
 	if (mode_.GetMode_id() == 1)
 	{
+		char data;
 		if (Uart_.Open(portnr, 9600) != true)
 		{
 			display_.ComClosed();
+			Sleep(1000);
+		}
+		else if (Uart_.ReadData(&data, 1) == 'F')
+		{
+			display_.Systemlaast();
 			Sleep(1000);
 		}
 		else
@@ -58,7 +64,6 @@ void PC_styring::SetMode(int m)
 			{
 				Uart_.sendExample(portnr, 9600, 1); //SEND DATA TÆND LED
 				Sleep(1000);
-				char data;
 				Uart_.ReadData(&data, 1);
 				if ( data != 1)
 				{
@@ -111,9 +116,15 @@ void PC_styring::SetMode(int m)
 	}
 	else if (mode_.GetMode_id() == 3)
 	{
+		char data;
 		if (Uart_.Open(portnr, 9600) != true)
 		{
 			display_.ComClosed();
+			Sleep(1000);
+		}
+		else if (Uart_.ReadData(&data, 1) == 'F')
+		{
+			display_.Systemlaast();
 			Sleep(1000);
 		}
 		else
@@ -217,9 +228,15 @@ void PC_styring::SetMode(int m)
 	}
 	else if (mode_.GetMode_id() == 4)
 	{
+		char data;
 		if (Uart_.Open(portnr, 9600) != true)
 		{
 			display_.ComClosed();
+			Sleep(1000);
+		}
+		else if (Uart_.ReadData(&data, 1) == 'F')
+		{
+			display_.Systemlaast();
 			Sleep(1000);
 		}
 		else
