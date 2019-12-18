@@ -36,20 +36,25 @@ ISR(TIMER3_OVF_vect)	//timer overflow interrupt to end burst
 
 int main(void)
 {
-	//sei();
+	sei();
 	//while(1){
 		//if(x10.getDone())
 			//x10.sendMode(0b10100101);
 	//}
+	
+	char data;
 	while(1)
 	{
-		char data = 0;
+		while(!(k.CharReady())){}
 		data = k.ReadChar();
-		if(data > 0 && data < 5)
+		if ((PINB & 0b00000010) != 0)
 		{
 			while(!(x10.getDone())){}
-					x10.sendMode(data);
-					k.SendChar(data);
+			x10.sendMode(data);
+			k.SendChar(data);
+		} else
+		{
+			k.SendChar('F');
 		}
 	}
 	

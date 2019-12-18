@@ -20,8 +20,8 @@ class Kom
 		
 		void SendChar(char);
 		char ReadChar();
-	private:
 		bool CharReady();	
+	private:
 	
 	
 };
