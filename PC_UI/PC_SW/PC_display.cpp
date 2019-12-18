@@ -163,3 +163,9 @@ void PC_display::ComClosed()
 	cout << "Fejl hos COM port" << endl;
 	_sleep(1000);
 }
+
+void PC_display::Systemlaast()
+{
+	cout << "System er laast" << endl;
+	_sleep(1000);
+}
