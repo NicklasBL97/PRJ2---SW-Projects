@@ -1,0 +1,29 @@
+/*
+ * TEST.cpp
+ *
+ * Created: 13/12/2019 10.52.59
+ * Author : Thomas G. Lodberg
+ */ 
+
+#include <avr/io.h>
+
+
+int main(void)
+{
+	DDRB = 0xFF;
+	PORTB = 0;
+	DDRF = 0;
+	DDRA = 0;
+	//RXEN0 = 1;
+	
+    /* Replace with your application code */
+    while (1) 
+    {
+	
+		if (PINA ==0b11111110)
+		{
+		PORTB = 0xFF;	
+		}
+    }
+}
+
