@@ -1,0 +1,30 @@
+/*
+ * TEST2.cpp
+ *
+ * Created: 13/12/2019 12.26.20
+ * Author : Thomas G. Lodberg
+ */ 
+
+#include <avr/io.h>
+
+
+
+int main(void)
+{
+	DDRK = 0xFF;
+	DDRF = 0;
+	DDRA = 0;
+	PORTK = 0;
+	//RXEN0 = 1;
+	
+	/* Replace with your application code */
+	while (1)
+	{
+		
+		if ((PINF &= 0b10000000)!= 0)
+		{
+			PORTK = 0xFF;
+		}
+	}
+}
+
