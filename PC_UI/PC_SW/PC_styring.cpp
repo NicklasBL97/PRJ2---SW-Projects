@@ -324,7 +324,7 @@ void PC_styring::SetMode(int m)
 								{
 									Sleep(100);
 									timer++;
-									if (timer >= 590)
+									if (timer >= 560)
 									{
 										loopBool = false;
 									}
@@ -369,7 +369,7 @@ void PC_styring::SetMode(int m)
 								{
 									Sleep(100);
 									timer++;
-									if (timer >= 590)
+									if (timer >= 560)
 									{
 										loopBool = false;
 									}
